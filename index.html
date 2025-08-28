@@ -818,7 +818,7 @@
                         <div>
                             <label style="font-size: 0.9rem; color: #6B7280;">Minute</label>
                             <select id="birthMinute" class="input-field" onchange="validateTime()">
-                                <option value="0">0</option>
+                                <option value="0">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
                                 <option value="45">45</option>
@@ -834,7 +834,7 @@
                         </div>
                     </div>
                     <button type="button" class="unknown-time-btn" onclick="useUnknownTime()">
-                        Use Noon (Default for Unknown Time)
+                        Don't Know Time - Use Noon
                     </button>
                     <span id="timeValidation" class="validation-icon">✓</span>
                     <div id="timeError" class="error-message"></div>
@@ -1027,6 +1027,7 @@
                                 <br><strong>Like:</strong> A child learning to walk and talk - everything is new and overwhelming.
                                 <br><strong>Focus:</strong> Safety, following rules, staying alive, simple pleasures.
                                 <br><strong>Challenges:</strong> Fear of the unknown, need for security, difficulty with complexity.
+                                <br><strong>Common Traits:</strong> Simple lifestyle preferences, traditional values, literal thinking, strong tribal/group loyalties, fear of change, focus on basic needs and comforts.
                             </div>
                         </div>
 
@@ -1039,6 +1040,7 @@
                                 <br><strong>Like:</strong> A child who wants clear rules and gets upset when others break them.
                                 <br><strong>Focus:</strong> Order, tradition, belonging to groups, moral certainty.
                                 <br><strong>Challenges:</strong> Judging others, rigidity, fear of being different.
+                                <br><strong>Common Traits:</strong> Strong moral convictions, traditional religious or political beliefs, difficulty accepting different lifestyles, focus on duty and conformity, black-and-white thinking.
                             </div>
                         </div>
 
@@ -1051,6 +1053,7 @@
                                 <br><strong>Like:</strong> A teenager wanting to prove themselves and make their mark on the world.
                                 <br><strong>Focus:</strong> Success, recognition, building things, competition, material achievement.
                                 <br><strong>Challenges:</strong> Ego, workaholism, sacrificing relationships for success.
+                                <br><strong>Common Traits:</strong> Highly ambitious, competitive, materialistic, excellent at building careers/businesses, impatient with "inefficiency," often wealthy or power-seeking.
                             </div>
                         </div>
 
@@ -1063,6 +1066,7 @@
                                 <br><strong>Like:</strong> A college student questioning everything they were taught and seeking deeper meaning.
                                 <br><strong>Focus:</strong> Relationships, emotions, authenticity, personal growth, therapy.
                                 <br><strong>Challenges:</strong> Emotional intensity, relationship drama, existential angst.
+                                <br><strong>Common Traits:</strong> Emotionally intense, drawn to therapy/psychology, questions authority, values authenticity over success, relationship-focused, often in helping professions.
                             </div>
                         </div>
 
@@ -1075,6 +1079,7 @@
                                 <br><strong>Like:</strong> A wise professor who's "been there, done that" and now wants to help others.
                                 <br><strong>Focus:</strong> Wisdom, teaching, service, spirituality, simplicity, peace.
                                 <br><strong>Challenges:</strong> Feeling disconnected from materialism, difficulty fitting into society.
+                                <br><strong>Common Traits:</strong> Spiritually oriented, comfortable with solitude, often in teaching/healing roles, simple lifestyle, wise beyond their years, sometimes feel like they don't belong.
                             </div>
                         </div>
                     </div>
@@ -1293,7 +1298,7 @@
                                 <span class="faq-toggle">▼</span>
                             </div>
                             <div class="faq-answer">
-                                That's totally fine! The calculator automatically uses noon (12:00 PM) as a default if you don't provide a time. While the exact time can add precision, the date and location are more important for determining soul age. Many people don't know their exact birth time, and the calculator still provides valuable insights.
+                                That's totally fine! The calculator automatically uses noon (12:00 PM) as a default if you don't provide a time or click "Don't Know Time - Use Noon." While the exact time can add precision, the date and location are more important for determining soul age. Many people don't know their exact birth time, and the calculator still provides valuable insights.
                             </div>
                         </div>
 
@@ -1623,12 +1628,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             validateForm();
             setupEventListeners();
-            
-            // Set default time to noon
-            document.getElementById('birthHour').value = '12';
-            document.getElementById('birthMinute').value = '0';
-            document.getElementById('ampm').value = 'PM';
-            validateTime();
         });
 
         function setupEventListeners() {
@@ -1709,13 +1708,19 @@
             const ampm = document.getElementById('ampm').value;
             
             // Time is optional - if any fields are empty, that's okay (will default to noon)
-            if (!hour || !minute || !ampm) {
+            if (!hour && !minute && !ampm) {
                 showValidation('timeValidation', true);
                 hideError('timeError');
                 return true;
             }
             
-            // If all fields are filled, validate the time
+            // If any field is filled, validate the complete time
+            if (!hour || !ampm) {
+                showError('timeError', 'Please complete the time or click "Don\'t Know Time"');
+                showValidation('timeValidation', false);
+                return false;
+            }
+            
             const hourNum = parseInt(hour);
             const minuteNum = parseInt(minute);
             
