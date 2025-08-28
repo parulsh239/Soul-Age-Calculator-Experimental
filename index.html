@@ -1742,43 +1742,53 @@
         }
 
         function validateTime() {
-            const hour = document.getElementById('birthHour').value;
-            const minute = document.getElementById('birthMinute').value;
-            const ampm = document.getElementById('ampm').value;
-            
-            // Time is optional - if any fields are empty, that's okay (will default to noon)
-            if (!hour && !minute && !ampm) {
-                showValidation('timeValidation', true);
-                hideError('timeError');
-                return true;
-            }
-            
-            // If any field is filled, validate the complete time
-            if (!hour || !ampm) {
-                showError('timeError', 'Please complete the time or click "Don\'t Know Time"');
-                showValidation('timeValidation', false);
-                return false;
-            }
-            
-            const hourNum = parseInt(hour);
-            const minuteNum = parseInt(minute);
-            
-            if (hourNum < 1 || hourNum > 12) {
-                showError('timeError', 'Hour must be between 1 and 12');
-                showValidation('timeValidation', false);
-                return false;
-            }
-            
-            if (minuteNum < 0 || minuteNum > 59) {
-                showError('timeError', 'Minutes must be between 0 and 59');
-                showValidation('timeValidation', false);
-                return false;
-            }
-            
-            hideError('timeError');
-            showValidation('timeValidation', true);
-            return true;
+    const hour = document.getElementById('birthHour').value;
+    const minute = document.getElementById('birthMinute').value || '0'; // Default to 0 if empty
+    const ampm = document.getElementById('ampm').value;
+    
+    // Time is completely optional - if hour and AM/PM are both empty, that's okay
+    if (!hour && !ampm) {
+        showValidation('timeValidation', true);
+        hideError('timeError');
+        return true;
+    }
+    
+    // If hour is filled, AM/PM must also be filled
+    if (hour && !ampm) {
+        showError('timeError', 'Please select AM or PM, or click "Don\'t Know Time"');
+        showValidation('timeValidation', false);
+        return false;
+    }
+    
+    // If AM/PM is filled, hour must also be filled
+    if (!hour && ampm) {
+        showError('timeError', 'Please select an hour, or click "Don\'t Know Time"');
+        showValidation('timeValidation', false);
+        return false;
+    }
+    
+    // If both hour and AM/PM are filled, validate the values
+    if (hour && ampm) {
+        const hourNum = parseInt(hour);
+        const minuteNum = parseInt(minute);
+        
+        if (hourNum < 1 || hourNum > 12) {
+            showError('timeError', 'Hour must be between 1 and 12');
+            showValidation('timeValidation', false);
+            return false;
         }
+        
+        if (minuteNum < 0 || minuteNum > 59) {
+            showError('timeError', 'Minutes must be between 0 and 59');
+            showValidation('timeValidation', false);
+            return false;
+        }
+    }
+    
+    hideError('timeError');
+    showValidation('timeValidation', true);
+    return true;
+}
 
         function validateLocation() {
             const input = document.getElementById('birthLocation');
