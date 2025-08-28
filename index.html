@@ -3,21 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔮 Complete Soul Age Calculator with All Tabs</title>
+    <title>Soul Age Calculator - Vedantic & Theosophical Analysis</title>
+    
+    <!-- Security Headers via Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://nominatim.openstreetmap.org; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://nominatim.openstreetmap.org; frame-ancestors 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="no-referrer">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    
+    <!-- SEO & Privacy Compliant Meta Tags -->
+    <meta name="description" content="Discover your soul's evolutionary journey through 777 incarnations using Vedantic wisdom and Theosophical teachings. GDPR-compliant, no data storage.">
+    <meta name="keywords" content="soul age, 777 incarnations, Vedanta, Theosophy, spiritual evolution, Jaimini astrology, karma, reincarnation">
+    <meta name="author" content="Soul Age Calculator">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Privacy & Security -->
+    <meta name="privacy" content="No user data collected or stored">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Soul Age Calculator - Discover Your Spiritual Evolution">
+    <meta property="og:description" content="Calculate your position in the 777-incarnation journey using ancient Vedantic and Theosophical wisdom.">
+    
     <style>
         :root {
-            --primary: #9333EA;
-            --secondary: #3B82F6;
+            --primary: #8B5CF6;
+            --secondary: #06B6D4;
+            --accent: #F59E0B;
             --success: #10B981;
             --warning: #F59E0B;
-            --danger: #EF4444;
+            --error: #EF4444;
             --text: #1F2937;
             --text-light: #6B7280;
-            --bg: #F8FAFC;
-            --surface: #FFFFFF;
             --border: #E5E7EB;
+            --bg-light: #F9FAFB;
             --shadow: rgba(0, 0, 0, 0.1);
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --sacred-gold: #D97706;
         }
 
         * {
@@ -27,30 +50,33 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--gradient);
-            min-height: 100vh;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            padding: 20px;
         }
 
         /* Header */
         .header {
             text-align: center;
             margin-bottom: 40px;
-            color: white;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px var(--shadow);
+            backdrop-filter: blur(10px);
         }
 
         .header h1 {
             font-size: 3rem;
-            background: linear-gradient(135deg, #ffffff, #e0e7ff);
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
@@ -58,15 +84,15 @@
         }
 
         .header .subtitle {
-            color: #E0E7FF;
+            color: #6B7280;
             font-size: 1.1rem;
             margin-bottom: 20px;
         }
 
         .privacy-notice {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+            background: #10B98120;
+            color: #065F46;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -143,93 +169,78 @@
         .section-header {
             display: flex;
             align-items: center;
+            gap: 15px;
             margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
         }
 
         .section-icon {
             font-size: 2rem;
-            margin-right: 15px;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Forms */
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--text);
+            font-weight: 700;
         }
 
-        .form-group {
-            position: relative;
+        /* Form Styles */
+        .input-group {
+            margin-bottom: 25px;
         }
 
-        .form-group label {
+        .input-label {
             display: block;
-            margin-bottom: 8px;
             font-weight: 600;
+            margin-bottom: 8px;
             color: var(--text);
         }
 
-        .form-group input,
-        .form-group select {
+        .input-field {
             width: 100%;
-            padding: 12px 16px;
+            padding: 15px;
             border: 2px solid var(--border);
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1rem;
             transition: all 0.3s ease;
             background: white;
         }
 
-        .form-group input:focus,
-        .form-group select:focus {
+        .input-field:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
         }
 
-        /* Time Input Container */
-        .time-container {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .time-container select,
-        .time-container input {
-            flex: 1;
-            min-width: 60px;
+        .time-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
         }
 
         .unknown-time-btn {
-            padding: 10px 16px;
-            background: var(--warning);
-            color: white;
-            border: none;
+            background: var(--bg-light);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border: 2px solid var(--border);
             border-radius: 8px;
             cursor: pointer;
             font-size: 0.9rem;
-            font-weight: 600;
             transition: all 0.3s ease;
-            white-space: nowrap;
         }
 
         .unknown-time-btn:hover {
-            background: #D97706;
-            transform: translateY(-1px);
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
 
-        /* Location */
-        .location-group {
+        .location-input-container {
             position: relative;
         }
 
@@ -241,7 +252,7 @@
             background: white;
             border: 2px solid var(--border);
             border-top: none;
-            border-radius: 0 0 10px 10px;
+            border-radius: 0 0 12px 12px;
             max-height: 200px;
             overflow-y: auto;
             z-index: 1000;
@@ -264,16 +275,28 @@
             border-bottom: none;
         }
 
-        .location-name {
+        .autocomplete-item .location-name {
             font-weight: 600;
             color: var(--text);
         }
 
-        .location-details {
+        .autocomplete-item .location-details {
             display: block;
             font-size: 0.85rem;
             color: #6B7280;
             margin-top: 2px;
+        }
+
+        .search-status {
+            padding: 10px 15px;
+            color: #6B7280;
+            font-size: 0.9rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-status.loading {
+            color: var(--primary);
         }
 
         /* Survey Questions */
@@ -305,6 +328,34 @@
             cursor: pointer;
         }
 
+        /* Validation */
+        .validation-icon {
+            display: none;
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+
+        .validation-icon.valid {
+            display: inline;
+            color: var(--success);
+        }
+
+        .validation-icon.invalid {
+            display: inline;
+            color: var(--error);
+        }
+
+        .error-message {
+            display: none;
+            color: var(--error);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
         /* Calculate Button */
         .calculate-btn {
             background: var(--gradient);
@@ -328,41 +379,11 @@
         }
 
         .calculate-btn:disabled {
-            opacity: 0.7;
+            opacity: 0.6;
             cursor: not-allowed;
-            transform: none;
         }
 
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 40px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-        }
-
-        .loading.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid #E5E7EB;
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Results */
+        /* Results Display */
         .results-container {
             display: none;
             margin-top: 30px;
@@ -370,120 +391,346 @@
 
         .results-container.show {
             display: block;
-            animation: slideIn 0.8s ease;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            animation: fadeIn 0.5s ease;
         }
 
         .soul-age-display {
-            text-align: center;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--gradient);
             color: white;
             padding: 40px;
             border-radius: 20px;
+            text-align: center;
             margin-bottom: 30px;
             position: relative;
             overflow: hidden;
         }
 
+        .soul-age-display::before {
+            content: '☸';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            font-size: 200px;
+            opacity: 0.1;
+        }
+
         .soul-age-number {
             font-size: 4rem;
-            font-weight: 900;
+            font-weight: bold;
             margin-bottom: 10px;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .soul-stage {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .soul-stage-description {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
             opacity: 0.9;
-            margin-bottom: 30px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .incarnation-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
             margin-top: 30px;
         }
 
         .stat-card {
             background: rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            border-radius: 15px;
+            padding: 15px;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
         }
 
         .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: bold;
             margin-bottom: 5px;
         }
 
         .stat-label {
             font-size: 0.9rem;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
-        /* Error Messages */
-        .error-message {
-            color: var(--danger);
-            font-size: 0.9rem;
-            margin-top: 5px;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
+        /* Stage Descriptions Section */
+        .stage-description-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            border-left: 5px solid var(--primary);
         }
 
-        .error-message.show {
-            opacity: 1;
-            transform: translateY(0);
+        .stage-description-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
         }
 
-        /* Validation Indicators */
-        .validation-indicator {
-            margin-left: 8px;
-            font-size: 0.9rem;
+        .stage-description-text {
+            line-height: 1.7;
+            color: var(--text);
+            margin-bottom: 15px;
         }
 
-        .validation-indicator.valid::after {
-            content: "✓";
-            color: var(--success);
+        .stage-traits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .validation-indicator.invalid::after {
-            content: "✗";
-            color: var(--danger);
+        .trait-group {
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 10px;
         }
 
-        /* Responsive Design */
+        .trait-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .trait-list {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Confidence Indicators */
+        .confidence-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .confidence-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .confidence-dot.confidence-high {
+            background: var(--success);
+        }
+
+        .confidence-dot.confidence-medium {
+            background: var(--warning);
+        }
+
+        .confidence-dot.confidence-low {
+            background: var(--error);
+        }
+
+        .confidence-text {
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Understanding Tab Styles */
+        .wisdom-card {
+            background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--sacred-gold);
+        }
+
+        .wisdom-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .evolution-stages {
+            display: grid;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .stage-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow);
+            border-left: 4px solid;
+        }
+
+        .stage-card.infant { border-left-color: #EF4444; }
+        .stage-card.baby { border-left-color: #F59E0B; }
+        .stage-card.young { border-left-color: #10B981; }
+        .stage-card.mature { border-left-color: #3B82F6; }
+        .stage-card.old { border-left-color: #8B5CF6; }
+
+        .stage-number {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stage-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .stage-range {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .stage-traits-list {
+            margin-top: 15px;
+        }
+
+        .stage-traits-list li {
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        /* FAQ Styles */
+        .faq-section {
+            margin-top: 30px;
+        }
+
+        .faq-category {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .faq-category-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 15px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            display: none;
+            padding-top: 15px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .faq-answer.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* Characteristics Display */
+        .characteristics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .characteristic-card {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .characteristic-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .characteristic-list {
+            list-style: none;
+        }
+
+        .characteristic-list li {
+            padding: 5px 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .characteristic-list li:before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 15px;
             }
             
             .header h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .tabs-nav {
                 flex-direction: column;
-                gap: 5px;
             }
             
-            .tab-btn {
-                justify-content: center;
-            }
-            
-            .form-grid {
+            .time-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .time-container {
-                flex-direction: column;
-                align-items: stretch;
             }
             
             .soul-age-number {
@@ -491,222 +738,250 @@
             }
             
             .incarnation-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
-        }
-
-        /* Understanding Tab Styles */
-        .stage-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .stage-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--primary);
-            transition: transform 0.3s ease;
-        }
-
-        .stage-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stage-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .stage-description {
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Security Badge */
-        .security-badge {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 10px 15px;
-            border-radius: 25px;
-            box-shadow: 0 5px 15px var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <header class="header">
-            <h1>🔮 Complete Soul Age Calculator</h1>
-            <p class="subtitle">
-                Discover your spiritual evolution through Vedantic wisdom and astrological analysis
+        <!-- Header -->
+        <div class="header">
+            <h1>🕉️ Soul Age Calculator</h1>
+            <p class="subtitle">Discover Your Position in the 777-Incarnation Journey</p>
+            <p style="color: #6B7280; font-size: 0.95rem;">
+                Based on Ancient Vedantic Wisdom & Theosophical Teachings
             </p>
             <div class="privacy-notice">
-                🔒 100% Privacy Guaranteed - No Data Storage - GDPR Compliant
+                🔒 Completely Private - No Data Stored
             </div>
-        </header>
+        </div>
 
-        <!-- Tabs Navigation -->
-        <nav class="tabs-nav">
-            <button class="tab-btn active" data-tab="calculate">
-                <span class="tab-icon">📊</span>
-                Calculate
+        <!-- Navigation Tabs -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('calculator-tab', this)">
+                <span class="tab-icon">🧮</span>
+                Calculator
             </button>
-            <button class="tab-btn" data-tab="understanding">
-                <span class="tab-icon">📚</span>
+            <button class="tab-btn" onclick="switchTab('understanding-tab', this)">
+                <span class="tab-icon">🕉️</span>
                 Understanding
             </button>
-            <button class="tab-btn" data-tab="guidance">
-                <span class="tab-icon">🧘</span>
-                Spiritual Guidance
+            <button class="tab-btn" onclick="switchTab('jaimini-tab', this)">
+                <span class="tab-icon">🔮</span>
+                Jaimini Analysis
             </button>
-        </nav>
+            <button class="tab-btn" onclick="switchTab('faq-tab', this)">
+                <span class="tab-icon">❓</span>
+                FAQ
+            </button>
+        </div>
 
-        <!-- Tab 1: Calculate -->
-        <div id="calculate-tab" class="tab-content active">
+        <!-- Tab 1: Calculator -->
+        <div id="calculator-tab" class="tab-content active">
             <!-- Birth Information -->
             <div class="section">
                 <div class="section-header">
-                    <span class="section-icon">⭐</span>
+                    <span class="section-icon">📅</span>
                     <h2 class="section-title">Birth Information</h2>
                 </div>
-                
-                <form id="birthForm" novalidate>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="birthDate">
-                                Birth Date
-                                <span class="validation-indicator" id="dateValidation"></span>
-                            </label>
-                            <input type="date" id="birthDate" required>
-                            <div class="error-message" id="dateError"></div>
+
+                <div class="input-group">
+                    <label class="input-label">Birth Date *</label>
+                    <input type="date" id="birthDate" class="input-field" onchange="validateDate()" required>
+                    <span id="dateValidation" class="validation-icon">✓</span>
+                    <div id="dateError" class="error-message"></div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Birth Time (Optional - defaults to noon if not provided)</label>
+                    <div class="time-grid">
+                        <div>
+                            <label style="font-size: 0.9rem; color: #6B7280;">Hour</label>
+                            <select id="birthHour" class="input-field" onchange="validateTime()">
+                                <option value="">Hour</option>
+                                <option value="12">12</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="birthTime">
-                                Birth Time (Optional - uses noon if unknown)
-                                <span class="validation-indicator" id="timeValidation"></span>
-                            </label>
-                            <div class="time-container">
-                                <select id="birthHour">
-                                    <option value="">HH</option>
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                    <option value="4">04</option>
-                                    <option value="5">05</option>
-                                    <option value="6">06</option>
-                                    <option value="7">07</option>
-                                    <option value="8">08</option>
-                                    <option value="9">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                </select>
-                                <input type="number" id="birthMinute" placeholder="MM" min="0" max="59">
-                                <select id="ampm">
-                                    <option value="">AM/PM</option>
-                                    <option value="AM">AM</option>
-                                    <option value="PM">PM</option>
-                                </select>
-                                <button type="button" class="unknown-time-btn" id="unknownTimeBtn">
-                                    Unknown Time
-                                </button>
-                            </div>
-                            <div class="error-message" id="timeError"></div>
+                        <div>
+                            <label style="font-size: 0.9rem; color: #6B7280;">Minute</label>
+                            <select id="birthMinute" class="input-field" onchange="validateTime()">
+                                <option value="0">0</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                            </select>
                         </div>
-                        
-                        <div class="form-group location-group">
-                            <label for="birthPlace">
-                                Birth Location
-                                <span class="validation-indicator" id="placeValidation"></span>
-                            </label>
-                            <input type="text" id="birthPlace" placeholder="Start typing city name..." autocomplete="off">
-                            <div class="autocomplete-dropdown" id="autocompleteDropdown"></div>
-                            <div class="error-message" id="placeError"></div>
+                        <div>
+                            <label style="font-size: 0.9rem; color: #6B7280;">AM/PM</label>
+                            <select id="ampm" class="input-field" onchange="validateTime()">
+                                <option value="">AM/PM</option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
                         </div>
                     </div>
-                    
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>Latitude</label>
-                            <input type="number" id="latitude" step="0.0001" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Longitude</label>
-                            <input type="number" id="longitude" step="0.0001" readonly>
-                        </div>
+                    <button type="button" class="unknown-time-btn" onclick="useUnknownTime()">
+                        Use Noon (Default for Unknown Time)
+                    </button>
+                    <span id="timeValidation" class="validation-icon">✓</span>
+                    <div id="timeError" class="error-message"></div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Birth Location *</label>
+                    <div class="location-input-container">
+                        <input type="text" 
+                               id="birthLocation" 
+                               class="input-field" 
+                               placeholder="e.g., New York, London, Mumbai..."
+                               onchange="validateLocation()"
+                               oninput="searchLocation()"
+                               autocomplete="off"
+                               required>
+                        <div id="locationAutocomplete" class="autocomplete-dropdown"></div>
                     </div>
-                </form>
+                    <span id="locationValidation" class="validation-icon">✓</span>
+                    <div id="locationError" class="error-message"></div>
+                </div>
             </div>
 
-            <!-- Spiritual Assessment -->
+            <!-- Soul Insights Survey -->
             <div class="section">
                 <div class="section-header">
-                    <span class="section-icon">🧘</span>
-                    <h2 class="section-title">Spiritual Experience Assessment</h2>
+                    <span class="section-icon">🧿</span>
+                    <h2 class="section-title">Soul Insights Survey</h2>
                 </div>
-                
                 <p style="color: #6B7280; margin-bottom: 20px;">
-                    These questions help calibrate your soul age calculation by assessing karmic patterns and spiritual development markers.
+                    These questions help refine your soul age calculation by understanding your current life patterns and spiritual inclinations.
                 </p>
-                
-                <div class="survey-grid" id="surveyQuestions">
-                    <!-- Will be populated by JavaScript -->
+
+                <div class="survey-grid">
+                    <div class="question-card">
+                        <div class="question-text">What drives you most in life?</div>
+                        <select id="q1">
+                            <option value="">Select one...</option>
+                            <option value="survival">Basic survival, security, and material needs</option>
+                            <option value="pleasure">Pleasure, excitement, and new experiences</option>
+                            <option value="success">Success, achievement, and recognition</option>
+                            <option value="relationships">Deep relationships and emotional connections</option>
+                            <option value="meaning">Meaning, wisdom, and spiritual growth</option>
+                        </select>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-text">How do you typically handle conflict?</div>
+                        <select id="q2">
+                            <option value="">Select one...</option>
+                            <option value="avoid">Avoid it at all costs</option>
+                            <option value="fight">Fight aggressively to win</option>
+                            <option value="compete">Compete strategically</option>
+                            <option value="understand">Seek to understand all perspectives</option>
+                            <option value="transcend">Find ways to transcend the conflict entirely</option>
+                        </select>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-text">What's your relationship with material possessions?</div>
+                        <select id="q3">
+                            <option value="">Select one...</option>
+                            <option value="essential">They're essential for my sense of security</option>
+                            <option value="enjoy">I enjoy them but they're not everything</option>
+                            <option value="status">They represent my success and status</option>
+                            <option value="tools">They're just tools for deeper purposes</option>
+                            <option value="burden">They often feel like a burden</option>
+                        </select>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-text">How do you learn best?</div>
+                        <select id="q4">
+                            <option value="">Select one...</option>
+                            <option value="repetition">Through repetition and following rules</option>
+                            <option value="experience">Through direct, often intense experiences</option>
+                            <option value="systems">Through structured systems and methods</option>
+                            <option value="reflection">Through deep reflection and inner work</option>
+                            <option value="intuition">Through intuition and spiritual insight</option>
+                        </select>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-text">What's your attitude toward change?</div>
+                        <select id="q5">
+                            <option value="">Select one...</option>
+                            <option value="resist">I strongly resist most changes</option>
+                            <option value="excitement">I seek change for excitement</option>
+                            <option value="opportunity">I see change as opportunity for growth</option>
+                            <option value="natural">I accept change as natural and necessary</option>
+                            <option value="catalyst">I often catalyze change in others</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
-            <button class="calculate-btn" id="calculateBtn">
-                ✨ Calculate My Soul Age
+            <button class="calculate-btn" onclick="calculateSoulAge()" disabled>
+                ✨ Calculate My Soul Age ✨
             </button>
 
-            <!-- Loading State -->
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p style="margin-top: 20px; color: var(--primary);">
-                    Analyzing your karmic blueprint through Vedantic algorithms...
-                </p>
-            </div>
-
-            <!-- Results -->
-            <div class="results-container" id="resultsContainer">
+            <!-- Results Section -->
+            <div id="results" class="results-container">
                 <div class="soul-age-display">
-                    <div id="timeEstimatedNotice" style="background: rgba(255,193,7,0.2); color: #856404; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem; display: none;">
-                        ⚠️ Time estimated as 12:00 PM - results may vary by ±50 incarnations
+                    <div class="confidence-indicator">
+                        <span id="confidenceDot" class="confidence-dot"></span>
+                        <span id="confidenceText" class="confidence-text"></span>
                     </div>
-                    <div class="soul-age-number" id="soulAgeNumber">~432</div>
-                    <div class="soul-stage" id="soulStage">Mature Soul - Heart Chakra Activation</div>
                     
+                    <div class="soul-age-number" id="soulAgeNumber">~</div>
+                    <div class="soul-stage" id="soulStage">Calculating...</div>
+                    <div class="soul-stage-description" id="soulStageDescription"></div>
+
                     <div class="incarnation-grid">
                         <div class="stat-card">
-                            <div class="stat-value" id="incarnationRange">425-440</div>
+                            <div class="stat-value" id="incarnationRange">-</div>
                             <div class="stat-label">Incarnation Range</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-value" id="earthYears">~71k</div>
+                            <div class="stat-value" id="earthYears">-</div>
                             <div class="stat-label">Earth Years</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-value" id="spiralLevel">4th</div>
-                            <div class="stat-label">Spiral Level</div>
+                            <div class="stat-value" id="spiralLevel">-</div>
+                            <div class="stat-label">Evolutionary Spiral</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-value" id="remainingLives">345</div>
-                            <div class="stat-label">Lives to Liberation</div>
+                            <div class="stat-value" id="remainingLives">-</div>
+                            <div class="stat-label">Remaining Lives</div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Stage Description -->
+                <div id="stageDescriptionCard" class="stage-description-card">
+                    <div class="stage-description-title" id="stageDescriptionTitle"></div>
+                    <div class="stage-description-text" id="stageDescriptionText"></div>
+                    <div class="stage-traits" id="stageTraits"></div>
+                </div>
+
+                <!-- Characteristics Section -->
+                <div class="section">
+                    <div class="section-header">
+                        <span class="section-icon">🎯</span>
+                        <h2 class="section-title">Your Soul Characteristics</h2>
+                    </div>
+                    <div id="characteristicsDisplay">
+                        <!-- Will be populated by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -716,349 +991,686 @@
         <div id="understanding-tab" class="tab-content">
             <div class="section">
                 <div class="section-header">
-                    <span class="section-icon">📚</span>
-                    <h2 class="section-title">Understanding Soul Ages</h2>
+                    <span class="section-icon">🕉️</span>
+                    <h2 class="section-title">The 777-Incarnation Framework</h2>
                 </div>
 
-                <p style="line-height: 1.8; color: #4B5563; margin-bottom: 30px;">
-                    Soul age represents the number of incarnations a soul has experienced in its journey toward liberation. 
-                    This system is based on Vedantic teachings and incorporates Sinnett's 777-incarnation spiral evolution model.
-                </p>
-
-                <div class="stage-grid">
-                    <div class="stage-card">
-                        <div class="stage-title">🌱 Infant Soul (1-35)</div>
-                        <div class="stage-description">
-                            Beginning their earthly journey, focused on survival, basic needs, and simple lessons. 
-                            Often drawn to traditional structures and clear authorities.
-                        </div>
+                <div class="wisdom-card">
+                    <div class="wisdom-header">
+                        <span>📜</span>
+                        <span>What This Calculator Does</span>
                     </div>
-                    <div class="stage-card">
-                        <div class="stage-title">👶 Baby Soul (36-105)</div>
-                        <div class="stage-description">
-                            Learning civilization rules, seeking structure and meaning. Strong moral compass, 
-                            preference for established systems and traditional values.
-                        </div>
-                    </div>
-                    <div class="stage-card">
-                        <div class="stage-title">🧑 Young Soul (106-210)</div>
-                        <div class="stage-description">
-                            Ambitious and achievement-oriented, focused on success, power, and recognition. 
-                            Competitive nature, building civilizations and personal accomplishments.
-                        </div>
-                    </div>
-                    <div class="stage-card">
-                        <div class="stage-title">🧘 Mature Soul (211-350)</div>
-                        <div class="stage-description">
-                            Emotional and relationship-focused, seeking meaning and authentic connection. 
-                            High empathy, psychological awareness, and interest in personal growth.
-                        </div>
-                    </div>
-                    <div class="stage-card">
-                        <div class="stage-title">👴 Old Soul (351-490)</div>
-                        <div class="stage-description">
-                            Wise and detached, focused on teaching, spirituality, and service. 
-                            Natural philosophers with broad perspective and deep understanding.
-                        </div>
-                    </div>
-                    <div class="stage-card">
-                        <div class="stage-title">🎭 7th Level Souls (491-700)</div>
-                        <div class="stage-description">
-                            Integration phase, mastering all previous lessons while preparing for transcendence. 
-                            Often serve as bridges between physical and spiritual realms.
-                        </div>
-                    </div>
-                    <div class="stage-card">
-                        <div class="stage-title">🌟 Advanced Souls (701-777)</div>
-                        <div class="stage-description">
-                            Final incarnations before liberation, serving as spiritual teachers and guides. 
-                            Rarely incarnate, only for specific missions of global significance.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tab 3: Spiritual Guidance -->
-        <div id="guidance-tab" class="tab-content">
-            <div class="section">
-                <div class="section-header">
-                    <span class="section-icon">🧘</span>
-                    <h2 class="section-title">Personalized Spiritual Guidance</h2>
-                </div>
-
-                <div style="background: #F0F9FF; padding: 25px; border-radius: 15px; border-left: 5px solid #0EA5E9; margin-bottom: 30px;">
                     <p style="line-height: 1.8; color: #4B5563;">
-                        Based on your soul age calculation, receive personalized guidance for your spiritual journey, 
-                        including recommended practices, karmic lessons, and soul mission insights.
+                        This calculator determines where you are in your soul's 777-lifetime journey on Earth. Based on ancient spiritual teachings from India (Vedanta) and 19th-century Theosophical wisdom, it calculates your approximate "soul age" - how many lifetimes you've experienced as a human being.
+                    </p>
+                    <p style="margin-top: 15px; line-height: 1.8; color: #4B5563;">
+                        Think of it like determining what grade you're in at "Earth School." Just as students progress through elementary, middle school, high school, and college, souls progress through different stages of human development across many lifetimes.
                     </p>
                 </div>
 
-                <div id="guidanceContent" style="display: none;">
-                    <!-- Will be populated after calculation -->
+                <div class="wisdom-card">
+                    <div class="wisdom-header">
+                        <span>🌟</span>
+                        <span>The Five Soul Ages Explained Simply</span>
+                    </div>
+                    <p style="line-height: 1.8; color: #4B5563; margin-bottom: 20px;">
+                        Every human soul progresses through five main stages during their Earth incarnations. Each stage has its own lessons, challenges, and ways of seeing the world:
+                    </p>
+
+                    <div class="evolution-stages">
+                        <div class="stage-card infant">
+                            <div class="stage-number">Stage 1</div>
+                            <div class="stage-name">Infant Soul (Lives 1-155)</div>
+                            <div class="stage-range">The "Kindergarten" of Human Experience</div>
+                            <div class="stage-description-text">
+                                <strong>What they're learning:</strong> Basic human survival, how bodies work, basic social rules.
+                                <br><strong>Like:</strong> A child learning to walk and talk - everything is new and overwhelming.
+                                <br><strong>Focus:</strong> Safety, following rules, staying alive, simple pleasures.
+                                <br><strong>Challenges:</strong> Fear of the unknown, need for security, difficulty with complexity.
+                            </div>
+                        </div>
+
+                        <div class="stage-card baby">
+                            <div class="stage-number">Stage 2</div>
+                            <div class="stage-name">Baby Soul (Lives 156-310)</div>
+                            <div class="stage-range">The "Elementary School" Phase</div>
+                            <div class="stage-description-text">
+                                <strong>What they're learning:</strong> Right vs. wrong, group belonging, tradition, authority.
+                                <br><strong>Like:</strong> A child who wants clear rules and gets upset when others break them.
+                                <br><strong>Focus:</strong> Order, tradition, belonging to groups, moral certainty.
+                                <br><strong>Challenges:</strong> Judging others, rigidity, fear of being different.
+                            </div>
+                        </div>
+
+                        <div class="stage-card young">
+                            <div class="stage-number">Stage 3</div>
+                            <div class="stage-name">Young Soul (Lives 311-465)</div>
+                            <div class="stage-range">The "High School" Experience</div>
+                            <div class="stage-description-text">
+                                <strong>What they're learning:</strong> Personal power, achievement, independence, success.
+                                <br><strong>Like:</strong> A teenager wanting to prove themselves and make their mark on the world.
+                                <br><strong>Focus:</strong> Success, recognition, building things, competition, material achievement.
+                                <br><strong>Challenges:</strong> Ego, workaholism, sacrificing relationships for success.
+                            </div>
+                        </div>
+
+                        <div class="stage-card mature">
+                            <div class="stage-number">Stage 4</div>
+                            <div class="stage-name">Mature Soul (Lives 466-620)</div>
+                            <div class="stage-range">The "College Years" of Soul Development</div>
+                            <div class="stage-description-text">
+                                <strong>What they're learning:</strong> Emotional depth, authentic relationships, inner truth, psychology.
+                                <br><strong>Like:</strong> A college student questioning everything they were taught and seeking deeper meaning.
+                                <br><strong>Focus:</strong> Relationships, emotions, authenticity, personal growth, therapy.
+                                <br><strong>Challenges:</strong> Emotional intensity, relationship drama, existential angst.
+                            </div>
+                        </div>
+
+                        <div class="stage-card old">
+                            <div class="stage-number">Stage 5</div>
+                            <div class="stage-name">Old Soul (Lives 621-777)</div>
+                            <div class="stage-range">The "Graduate School" of Human Experience</div>
+                            <div class="stage-description-text">
+                                <strong>What they're learning:</strong> Wisdom, detachment, service, spiritual truth, universal love.
+                                <br><strong>Like:</strong> A wise professor who's "been there, done that" and now wants to help others.
+                                <br><strong>Focus:</strong> Wisdom, teaching, service, spirituality, simplicity, peace.
+                                <br><strong>Challenges:</strong> Feeling disconnected from materialism, difficulty fitting into society.
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div style="text-align: center; color: #6B7280; padding: 40px;">
-                    Complete your soul age calculation first to receive personalized spiritual guidance.
+                <div class="wisdom-card">
+                    <div class="wisdom-header">
+                        <span>🔄</span>
+                        <span>Why 777 Lives?</span>
+                    </div>
+                    <p style="line-height: 1.8; color: #4B5563;">
+                        The number 777 comes from ancient spiritual mathematics. In many traditions, 7 represents completion and perfection. The triple 7 (777) represents the complete journey of human soul evolution. It's calculated as 7 major cycles × 111 incarnations each = 777 total human lives needed to learn everything Earth has to teach us.
+                    </p>
+                </div>
+
+                <div class="wisdom-card">
+                    <div class="wisdom-header">
+                        <span>⚖️</span>
+                        <span>Important Disclaimers</span>
+                    </div>
+                    <p style="line-height: 1.8; color: #4B5563;">
+                        <strong>This is for Entertainment & Self-Reflection:</strong> This calculator is based on spiritual theories, not scientific facts. Use it as a tool for self-understanding and personal growth, not as absolute truth about your soul or destiny.
+                    </p>
+                    <p style="margin-top: 15px; line-height: 1.8; color: #4B5563;">
+                        <strong>Every Soul is Unique:</strong> Even souls at the same "age" can be very different. Your individual life experiences, choices, and karma create your unique path.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Jaimini Analysis -->
+        <div id="jaimini-tab" class="tab-content">
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">🔮</span>
+                    <h2 class="section-title">Jaimini (Jamakkol) Astrological Analysis</h2>
+                </div>
+
+                <div class="wisdom-card">
+                    <div class="wisdom-header">
+                        <span>📜</span>
+                        <span>What is Jaimini/Jamakkol Astrology?</span>
+                    </div>
+                    <p style="line-height: 1.8; color: #4B5563;">
+                        <strong>Jaimini astrology</strong>, also called <strong>Jamakkol</strong>, is a special type of Indian astrology developed by an ancient sage named Jaimini thousands of years ago. Unlike regular astrology that focuses on planets, Jaimini astrology focuses on the deeper patterns of your soul's journey.
+                    </p>
+                    <p style="margin-top: 15px; line-height: 1.8; color: #4B5563;">
+                        Think of regular astrology as looking at what's happening on the surface of a lake, while Jaimini astrology dives deep to understand the currents and depths beneath. It specializes in understanding your <strong>karmic patterns</strong> - the lessons your soul came here to learn.
+                    </p>
+                </div>
+
+                <div class="wisdom-card">
+                    <div class="wisdom-header">
+                        <span>🎯</span>
+                        <span>How This Calculator Uses Jaimini Principles</span>
+                    </div>
+                    <p style="line-height: 1.8; color: #4B5563;">
+                        Our calculator uses several key Jaimini concepts to determine your soul age:
+                    </p>
+                    <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.8; color: #4B5563;">
+                        <li><strong>Atmakaraka:</strong> Your "soul's main planet" - the planet that shows what your soul is trying to learn</li>
+                        <li><strong>Arudha Lagna:</strong> How others perceive you vs. who you really are (shows soul maturity)</li>
+                        <li><strong>Chara Karakas:</strong> The seven planets that represent different aspects of your soul's journey</li>
+                        <li><strong>Jaimini Aspects:</strong> Special planetary connections that reveal karmic relationships</li>
+                        <li><strong>Pada System:</strong> A unique way of calculating life themes that's different from regular astrology</li>
+                    </ul>
+                </div>
+
+                <div class="wisdom-card">
+                    <div class="wisdom-header">
+                        <span>🔍</span>
+                        <span>What Makes Jaimini Different?</span>
+                    </div>
+                    <p style="line-height: 1.8; color: #4B5563;">
+                        Regular astrology might tell you "You'll be successful in business." Jaimini astrology asks deeper questions like "What karmic lessons is your soul learning through business?" or "How does your work serve your soul's evolution?"
+                    </p>
+                    <p style="margin-top: 15px; line-height: 1.8; color: #4B5563;">
+                        It's particularly good at understanding:
+                    </p>
+                    <ul style="margin-top: 10px; padding-left: 20px; line-height: 1.8; color: #4B5563;">
+                        <li>Why you chose your current family and relationships</li>
+                        <li>What your soul's main purpose is in this lifetime</li>
+                        <li>What lessons you're working on from past lives</li>
+                        <li>How "old" or experienced your soul is</li>
+                    </ul>
+                </div>
+
+                <div class="wisdom-card">
+                    <div class="wisdom-header">
+                        <span>⚡</span>
+                        <span>The Soul Age Connection</span>
+                    </div>
+                    <p style="line-height: 1.8; color: #4B5563;">
+                        By analyzing your birth chart through Jaimini principles, the calculator can estimate where you are in your 777-incarnation journey. It looks at factors like:
+                    </p>
+                    <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.8; color: #4B5563;">
+                        <li>How complex your karmic patterns are</li>
+                        <li>Whether you're learning basic lessons or advanced spiritual concepts</li>
+                        <li>How you relate to material success vs. spiritual growth</li>
+                        <li>Your natural wisdom level and life approach</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 4: FAQ -->
+        <div id="faq-tab" class="tab-content">
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">❓</span>
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                </div>
+                <p style="color: #6B7280; margin-bottom: 30px;">
+                    Here are the most common questions people ask about soul age and this calculator. Click any question to see the answer.
+                </p>
+
+                <div class="faq-section">
+                    <!-- Basic Concepts -->
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <span>🌟</span>
+                            Basic Concepts
+                        </h3>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What exactly is a "soul age"?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Soul age refers to how many lifetimes your soul has experienced as a human being on Earth. It's like asking "what grade are you in?" at the school of human experience. A newer soul might be in "kindergarten" while an older soul might be in "graduate school."
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Do I really have a soul, and does it actually reincarnate?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                This calculator is based on spiritual beliefs about reincarnation, not scientific facts. Many religions and spiritual traditions believe in souls and multiple lifetimes, while others don't. Use this as a tool for self-reflection rather than absolute truth. What matters is whether the insights help you understand yourself better.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Why 777 lives specifically? Where does this number come from?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                The number 777 comes from ancient spiritual mathematics found in Hindu and Theosophical teachings. It represents 7 major evolutionary cycles × 111 incarnations each. Seven is considered a number of completion in many traditions, so triple 7 represents the complete human journey.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What's the difference between soul age and my physical age?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Your physical age is how long your current body has been alive. Your soul age is about how many total lifetimes your soul has experienced. A 20-year-old could be an "old soul" if they've had many previous lifetimes, while a 60-year-old could be a "young soul" if they haven't had as many.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Is being an "older soul" better than being a "younger soul"?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                No! Each soul age has its own gifts and purposes. Young souls bring energy, ambition, and drive to build the world. Mature souls bring emotional depth and healing. Old souls bring wisdom and spiritual insight. We need all ages working together. It's not about being "better" - it's about being at different stages of learning.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Can my soul age change during this lifetime?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Your core soul age stays the same throughout one lifetime, but you can learn lessons from other soul ages. For example, a mature soul might need to learn young soul lessons about achievement, or an old soul might need to learn baby soul lessons about structure. Growth happens within your soul age, not by jumping to a different age.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How the Calculator Works -->
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <span>🧮</span>
+                            How the Calculator Works
+                        </h3>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                How does this calculator actually determine my soul age?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                The calculator uses your birth information to create an astrological chart, then applies Jaimini astrology principles to analyze your soul patterns. It combines this with your survey responses about your life approach and values. It's like a spiritual algorithm that looks at multiple factors to estimate where you are in your soul's journey.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Why do you need my birth time and location?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Your exact birth time and location create your unique astrological chart - like a snapshot of where all the planets were when you were born. This chart is believed to show your soul's chosen lessons and patterns for this lifetime. Don't worry if you don't know your exact time - the calculator defaults to noon and still gives meaningful results.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What if I don't know my exact birth time?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                That's totally fine! The calculator automatically uses noon (12:00 PM) as a default if you don't provide a time. While the exact time can add precision, the date and location are more important for determining soul age. Many people don't know their exact birth time, and the calculator still provides valuable insights.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                How accurate is this calculator?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                The calculator provides estimates based on spiritual theories, not scientific measurements. Think of it like a personality test - it can offer insights and food for thought, but it's not a precise scientific instrument. Use the results as a starting point for self-reflection rather than absolute truth.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Why do you ask those survey questions?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                The survey questions help refine your soul age estimate by understanding how you approach life right now. Your values, how you handle conflict, your relationship with material possessions, and how you learn all provide clues about your soul's maturity level and current lessons.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What is Jaimini astrology and why do you use it?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Jaimini is an ancient form of Vedic astrology that focuses specifically on the soul's journey and karmic patterns, making it perfect for soul age calculations. While regular astrology might predict events, Jaimini astrology looks at deeper spiritual patterns and the soul's evolutionary path.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Understanding Your Results -->
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <span>📊</span>
+                            Understanding Your Results
+                        </h3>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What do terms like "Infant Soul" or "Young Soul" actually mean?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                These are just names for different stages of soul development, like grade levels in school. "Infant" souls are new to human experience, "Baby" souls are learning rules and order, "Young" souls are focused on achievement and success, "Mature" souls are exploring emotions and relationships, and "Old" souls are seeking wisdom and spiritual truth.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                My result doesn't feel right to me. What does that mean?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Trust your intuition! This calculator provides estimates based on limited information. You might be transitioning between soul ages, have unusual karmic patterns, or the system might not capture your unique situation. Use the result as one perspective among many, not as the final word on who you are.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What does "confidence level" mean in my results?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                The confidence level shows how certain the calculator is about your result based on how clear your chart patterns are. High confidence means your chart shows strong, consistent patterns. Lower confidence might mean you're between soul ages or have complex patterns that are harder to categorize.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What are "Earth Years" and why do they matter?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                "Earth Years" represents approximately how long your soul has been having human experiences on this planet across all lifetimes. It's calculated by multiplying your estimated incarnations by average human lifespan. It gives you a sense of how much total human experience your soul has accumulated.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What does "Evolutionary Spiral" mean?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                The evolutionary spiral represents which of the seven major cycles of human development you're currently in. Think of it like which "semester" you're in at Earth University. Each spiral has different themes and lessons, building on the previous ones.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                How many more lifetimes do I have left?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                The "Remaining Lives" is a rough estimate based on the 777-lifetime model. But remember, this is spiritual theory, not scientific fact! Your actual path depends on your choices, growth rate, and life purpose. Some souls might graduate early, others might take longer. Focus on making this lifetime meaningful rather than counting future ones.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Life Applications -->
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <span>🌱</span>
+                            Life Applications
+                        </h3>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                How can knowing my soul age help me in real life?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Understanding your soul age can help you: understand why certain things come easily to you while others are challenging, accept your natural approach to life rather than forcing yourself to be different, understand why you connect with some people more than others, focus on lessons that are appropriate for your development level, and be more compassionate with yourself and others.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Can people of different soul ages have good relationships?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Absolutely! Different soul ages can complement each other beautifully. A young soul's drive might inspire an old soul to take action, while an old soul's wisdom might help a young soul find deeper meaning. The key is understanding and respecting each other's different approaches to life rather than trying to change each other.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Should I make major life decisions based on my soul age?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                No, don't make major decisions based solely on this calculator! Use soul age insights as one factor among many. Consider your practical circumstances, relationships, goals, and intuition too. This tool is for self-understanding and reflection, not for making big life choices.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                How do I work with the challenges of my soul age?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Each soul age has natural challenges that are part of the learning process. Instead of fighting them, work with them consciously. If you're a young soul struggling with ego, practice humility. If you're a mature soul overwhelmed by emotions, learn healthy boundaries. If you're an old soul feeling disconnected, find ways to serve that energize you.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Can I speed up my soul development?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Focus on growing within your current soul age rather than trying to rush to the next one. Conscious self-work, meditation, therapy, service to others, and learning from your experiences all contribute to soul growth. But remember, each soul age has valuable lessons - don't rush through them!
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What if I feel like I have traits from multiple soul ages?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                This is totally normal! You might be in transition between ages, or learning lessons from other ages as part of your growth. Most people have a primary soul age but can access energies from other ages when needed. You might also be at the very beginning or end of a particular age, showing traits of the previous or next age.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical & Spiritual -->
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <span>🔮</span>
+                            Technical & Spiritual Questions
+                        </h3>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Is this calculator storing my personal information?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                No, this calculator doesn't store any of your personal information. Everything is calculated in your browser and nothing is saved to any database. Your privacy is completely protected. This is clearly stated as "No Data Stored" in our privacy notice.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What spiritual traditions is this based on?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                This calculator combines concepts from Hindu Vedanta (especially the concept of Samsara - the cycle of birth and death), 19th-century Theosophy (Helena Blavatsky's teachings about soul evolution), and Jaimini astrology (an ancient Vedic astrological system). It synthesizes these traditions into a practical framework for understanding soul development.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Does this conflict with my religious beliefs?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                This calculator is based on Eastern spiritual concepts that may or may not align with your religious beliefs. Many religions have different views on souls, afterlife, and reincarnation. Use this tool only if it feels helpful and doesn't conflict with your personal faith. It's meant for self-reflection, not to challenge your religious beliefs.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What happens after the 777th incarnation?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                According to these spiritual traditions, after completing the 777 human incarnations, the soul achieves "Moksha" (liberation) or "Ascension." This means the soul no longer needs to incarnate in human form and can choose to serve in other ways - as guides, teachers, or by moving to other dimensions of existence. But this is spiritual theory, not scientific fact.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Can souls incarnate on other planets?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Some spiritual traditions believe souls can incarnate on different planets or dimensions, but this calculator focuses specifically on the human experience on Earth. The 777-incarnation framework is specifically about learning all the lessons available through human existence on our planet.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                What about karma and how does it relate to soul age?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Karma (the law of cause and effect from actions) is what drives the lessons at each soul age. Younger souls might be working out simpler karmas around survival and basic relationships, while older souls might be resolving more complex spiritual karmas. Your soul age influences what kinds of karmic lessons you're ready to handle.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Is there scientific evidence for reincarnation or soul ages?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                No, there is no widely accepted scientific evidence for reincarnation or soul ages. These are spiritual and philosophical concepts, not scientific facts. Some researchers have studied cases suggestive of reincarnation, but the scientific community doesn't consider this proven. Use this calculator as a tool for self-reflection and personal growth, not as scientific truth.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Troubleshooting -->
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <span>🛠️</span>
+                            Troubleshooting
+                        </h3>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                The calculator won't accept my birth location. What should I do?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Try typing just the city name first, then select from the dropdown options. If your exact location doesn't appear, choose the nearest major city. The calculator needs to find your location in its database to determine the correct timezone and geographical coordinates for your birth chart.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                I was born in a different country. Will this still work?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Yes! This calculator works for birth locations anywhere in the world. Just type your birth city and country, and select it from the dropdown. The system will automatically handle different timezones and geographical coordinates globally.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                The results seem to be loading forever. What's wrong?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Try refreshing the page and entering your information again. Make sure you've filled in all required fields (birth date and location) and answered all the survey questions. If problems persist, try using a different browser or clearing your browser cache.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Can I calculate soul age for someone else?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                You can enter someone else's birth information, but the survey questions should really be answered by that person themselves since they're about personal attitudes and approaches to life. The most accurate results come when people use the calculator for themselves.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Why do I get different results when I use the calculator multiple times?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                If you're changing your survey answers, you might get slightly different results since those responses affect the calculation. If you're using the exact same information and getting different results, that shouldn't happen - try refreshing your browser or clearing the cache.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">
+                                Is there a mobile app version of this calculator?
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                This web-based calculator is designed to work well on mobile devices through your web browser. There's no separate app needed - just visit this website on your phone or tablet and it will automatically adapt to your screen size.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Security Badge -->
-    <div class="security-badge">
-        <span>🔒</span>
-        <span>Secure • No Data Storage • GDPR Compliant</span>
-    </div>
-
     <script>
-        // State Management - In-memory only, no persistence
-        const AppState = {
-            currentTab: 'calculate',
-            birthData: null,
-            surveyAnswers: {},
-            calculationResults: null,
-            sessionId: generateSessionId(),
-            isCalculating: false,
-            timeEstimated: false
-        };
+        // Global variables
+        let currentLocationData = null;
+        let searchTimeout = null;
 
-        // Spiritual Questions
-        const spiritualQuestions = [
-            {
-                text: "How often do you experience synchronicities or meaningful coincidences?",
-                options: ["Never", "Rarely", "Sometimes", "Often", "Constantly"],
-                weight: 0.15
-            },
-            {
-                text: "How naturally does meditation or contemplation come to you?",
-                options: ["Very difficult", "Challenging", "Moderate effort", "Comes easily", "Effortless"],
-                weight: 0.12
-            },
-            {
-                text: "How important is personal achievement and recognition to you?",
-                options: ["Extremely important", "Very important", "Moderately important", "Somewhat important", "Not important"],
-                weight: 0.13
-            },
-            {
-                text: "How strongly do you feel a sense of life purpose or mission?",
-                options: ["No sense", "Vague feeling", "Some clarity", "Clear purpose", "Urgent mission"],
-                weight: 0.17
-            },
-            {
-                text: "How easily do you detach from material possessions and outcomes?",
-                options: ["Very attached", "Somewhat attached", "Balanced", "Easily detached", "Naturally detached"],
-                weight: 0.15
-            },
-            {
-                text: "How often do you experience states of expanded consciousness?",
-                options: ["Never", "Rarely", "Monthly", "Weekly", "Daily"],
-                weight: 0.15
-            },
-            {
-                text: "How much do you feel drawn to teaching or guiding others?",
-                options: ["Not at all", "Slightly", "Moderately", "Strongly", "It's my calling"],
-                weight: 0.13
-            }
-        ];
-
-        // Simple cities database for offline functionality
-        const cities = [
-            {name: "New York", country: "USA", lat: 40.7128, lng: -74.0060},
-            {name: "Los Angeles", country: "USA", lat: 34.0522, lng: -118.2437},
-            {name: "Chicago", country: "USA", lat: 41.8781, lng: -87.6298},
-            {name: "Houston", country: "USA", lat: 29.7604, lng: -95.3698},
-            {name: "London", country: "UK", lat: 51.5074, lng: -0.1278},
-            {name: "Paris", country: "France", lat: 48.8566, lng: 2.3522},
-            {name: "Tokyo", country: "Japan", lat: 35.6762, lng: 139.6503},
-            {name: "Sydney", country: "Australia", lat: -33.8688, lng: 151.2093},
-            {name: "Mumbai", country: "India", lat: 19.0760, lng: 72.8777},
-            {name: "Delhi", country: "India", lat: 28.7041, lng: 77.1025},
-            {name: "Toronto", country: "Canada", lat: 43.6532, lng: -79.3832},
-            {name: "Berlin", country: "Germany", lat: 52.5200, lng: 13.4050},
-            {name: "Madrid", country: "Spain", lat: 40.4168, lng: -3.7038},
-            {name: "Rome", country: "Italy", lat: 41.9028, lng: 12.4964},
-            {name: "Bangkok", country: "Thailand", lat: 13.7563, lng: 100.5018}
-        ];
-
-        // Initialize Application
-        function initApp() {
-            setupTabs();
-            setupForm();
-            setupAutocomplete();
-            setupUnknownTime();
-            initializeSurvey();
-            setupValidation();
-        }
-
-        // Generate Session ID
-        function generateSessionId() {
-            const array = new Uint8Array(16);
-            crypto.getRandomValues(array);
-            return Array.from(array, b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        // Tab Navigation
-        function setupTabs() {
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            validateForm();
+            setupEventListeners();
             
-            tabButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const targetTab = btn.dataset.tab;
-                    
-                    // Update buttons
-                    tabButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    
-                    // Update content
-                    tabContents.forEach(content => {
-                        content.classList.remove('active');
-                    });
-                    const targetContent = document.getElementById(`${targetTab}-tab`);
-                    if (targetContent) {
-                        targetContent.classList.add('active');
-                    }
-                    
-                    AppState.currentTab = targetTab;
-                });
-            });
-        }
+            // Set default time to noon
+            document.getElementById('birthHour').value = '12';
+            document.getElementById('birthMinute').value = '0';
+            document.getElementById('ampm').value = 'PM';
+            validateTime();
+        });
 
-        // Form Setup
-        function setupForm() {
-            const calculateBtn = document.getElementById('calculateBtn');
+        function setupEventListeners() {
+            // Date validation
+            document.getElementById('birthDate').addEventListener('change', validateForm);
             
-            calculateBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (validateForm()) {
-                    calculateSoulAge();
-                }
-            });
-        }
-
-        // Setup Unknown Time Button
-        function setupUnknownTime() {
-            const unknownBtn = document.getElementById('unknownTimeBtn');
-            
-            unknownBtn.addEventListener('click', () => {
-                // Set time to noon (12:00 PM)
-                document.getElementById('birthHour').value = '12';
-                document.getElementById('birthMinute').value = '0';
-                document.getElementById('ampm').value = 'PM';
-                
-                // Mark as estimated time
-                AppState.timeEstimated = true;
-                
-                // Update validation
-                showValidation('timeValidation', true);
-                hideError('timeError');
-                
-                // Visual feedback
-                unknownBtn.innerHTML = '✅ Set to Noon';
-                unknownBtn.style.background = '#10B981';
-                
-                setTimeout(() => {
-                    unknownBtn.innerHTML = 'Unknown Time';
-                    unknownBtn.style.background = '#F59E0B';
-                }, 2000);
-            });
-        }
-
-        // Setup Autocomplete
-        function setupAutocomplete() {
-            const input = document.getElementById('birthPlace');
-            const dropdown = document.getElementById('autocompleteDropdown');
-            
-            input.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                
-                if (query.length < 2) {
-                    dropdown.style.display = 'none';
-                    return;
-                }
-                
-                const matches = cities.filter(city => 
-                    city.name.toLowerCase().includes(query) ||
-                    city.country.toLowerCase().includes(query)
-                ).slice(0, 10);
-                
-                if (matches.length === 0) {
-                    dropdown.style.display = 'none';
-                    return;
-                }
-                
-                dropdown.innerHTML = matches.map(city => `
-                    <div class="autocomplete-item" data-lat="${city.lat}" data-lng="${city.lng}" data-name="${city.name}, ${city.country}">
-                        <div class="location-name">${city.name}</div>
-                        <span class="location-details">${city.country}</span>
-                    </div>
-                `).join('');
-                
-                dropdown.style.display = 'block';
-                
-                // Add click handlers
-                dropdown.querySelectorAll('.autocomplete-item').forEach(item => {
-                    item.addEventListener('click', () => {
-                        const lat = parseFloat(item.dataset.lat);
-                        const lng = parseFloat(item.dataset.lng);
-                        const name = item.dataset.name;
-                        
-                        input.value = name;
-                        document.getElementById('latitude').value = lat;
-                        document.getElementById('longitude').value = lng;
-                        
-                        dropdown.style.display = 'none';
-                        
-                        showValidation('placeValidation', true);
-                        hideError('placeError');
-                    });
+            // Time validation
+            ['birthHour', 'birthMinute', 'ampm'].forEach(id => {
+                const el = document.getElementById(id);
+                el.addEventListener('change', () => {
+                    validateTime();
+                    validateForm();
                 });
             });
             
-            // Hide dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!input.contains(e.target) && !dropdown.contains(e.target)) {
-                    dropdown.style.display = 'none';
-                }
+            // Location validation
+            document.getElementById('birthLocation').addEventListener('input', () => {
+                validateLocation();
+                validateForm();
+            });
+
+            // Survey validation
+            ['q1', 'q2', 'q3', 'q4', 'q5'].forEach(id => {
+                document.getElementById(id).addEventListener('change', validateForm);
             });
         }
 
-        // Initialize Survey Questions
-        function initializeSurvey() {
-            const container = document.getElementById('surveyQuestions');
-            
-            container.innerHTML = spiritualQuestions.map((question, index) => `
-                <div class="question-card">
-                    <div class="question-text">${question.text}</div>
-                    <select id="question-${index}">
-                        <option value="">Choose your answer...</option>
-                        ${question.options.map((option, optIndex) => 
-                            `<option value="${optIndex}">${option}</option>`
-                        ).join('')}
-                    </select>
-                </div>
-            `).join('');
-            
-            // Add change handlers
-            spiritualQuestions.forEach((_, index) => {
-                document.getElementById(`question-${index}`).addEventListener('change', (e) => {
-                    AppState.surveyAnswers[index] = parseInt(e.target.value);
-                });
+        // Tab switching
+        function switchTab(tabId, buttonEl) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
             });
-        }
-
-        // Setup Validation
-        function setupValidation() {
-            const birthDate = document.getElementById('birthDate');
-            const birthHour = document.getElementById('birthHour');
-            const birthMinute = document.getElementById('birthMinute');
-            const ampm = document.getElementById('ampm');
             
-            birthDate.addEventListener('blur', () => validateDate());
-            [birthHour, birthMinute, ampm].forEach(el => {
-                el.addEventListener('change', () => validateTime());
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
             });
+            
+            // Show selected tab and activate button
+            document.getElementById(tabId).classList.add('active');
+            buttonEl.classList.add('active');
         }
 
         // Validation Functions
@@ -1096,22 +1708,24 @@
             const minute = document.getElementById('birthMinute').value;
             const ampm = document.getElementById('ampm').value;
             
-            // Time is optional - if all fields are empty, that's okay
-            if (!hour && !minute && !ampm) {
+            // Time is optional - if any fields are empty, that's okay (will default to noon)
+            if (!hour || !minute || !ampm) {
                 showValidation('timeValidation', true);
                 hideError('timeError');
                 return true;
             }
             
-            // If any field is filled, validate the complete time
-            if (!hour || !ampm) {
-                showError('timeError', 'Please complete the time or click "Unknown Time"');
+            // If all fields are filled, validate the time
+            const hourNum = parseInt(hour);
+            const minuteNum = parseInt(minute);
+            
+            if (hourNum < 1 || hourNum > 12) {
+                showError('timeError', 'Hour must be between 1 and 12');
                 showValidation('timeValidation', false);
                 return false;
             }
             
-            const min = parseInt(minute) || 0;
-            if (min < 0 || min > 59) {
+            if (minuteNum < 0 || minuteNum > 59) {
                 showError('timeError', 'Minutes must be between 0 and 59');
                 showValidation('timeValidation', false);
                 return false;
@@ -1122,265 +1736,592 @@
             return true;
         }
 
-        function validateForm() {
-            const dateValid = validateDate();
-            const timeValid = validateTime(); // Time is now optional
-            const placeValid = document.getElementById('latitude').value && 
-                               document.getElementById('longitude').value;
+        function validateLocation() {
+            const input = document.getElementById('birthLocation');
             
-            if (!placeValid) {
-                showError('placeError', 'Please select a location from the dropdown');
-                showValidation('placeValidation', false);
-            } else {
-                hideError('placeError');
-                showValidation('placeValidation', true);
+            if (!input.value.trim()) {
+                showError('locationError', 'Birth location is required');
+                showValidation('locationValidation', false);
+                return false;
             }
             
-            return dateValid && timeValid && placeValid;
+            if (!currentLocationData) {
+                showError('locationError', 'Please select a location from the dropdown');
+                showValidation('locationValidation', false);
+                return false;
+            }
+            
+            hideError('locationError');
+            showValidation('locationValidation', true);
+            return true;
+        }
+
+        function validateForm() {
+            const dateValid = validateDate();
+            const timeValid = validateTime();
+            const locationValid = validateLocation();
+            
+            // Check survey questions
+            const surveyValid = ['q1', 'q2', 'q3', 'q4', 'q5'].every(id => 
+                document.getElementById(id).value !== ''
+            );
+            
+            const allValid = dateValid && timeValid && locationValid && surveyValid;
+            document.querySelector('.calculate-btn').disabled = !allValid;
+            
+            return allValid;
+        }
+
+        function showError(errorId, message) {
+            const errorEl = document.getElementById(errorId);
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
+        }
+
+        function hideError(errorId) {
+            const errorEl = document.getElementById(errorId);
+            errorEl.classList.remove('show');
+        }
+
+        function showValidation(validationId, isValid) {
+            const validationEl = document.getElementById(validationId);
+            validationEl.className = `validation-icon ${isValid ? 'valid' : 'invalid'}`;
+            validationEl.textContent = isValid ? '✓' : '✗';
+        }
+
+        // Location search functionality
+        function searchLocation() {
+            const query = document.getElementById('birthLocation').value;
+            
+            if (query.length < 3) {
+                hideLocationDropdown();
+                return;
+            }
+            
+            // Clear previous timeout
+            if (searchTimeout) {
+                clearTimeout(searchTimeout);
+            }
+            
+            // Debounce the search
+            searchTimeout = setTimeout(() => {
+                performLocationSearch(query);
+            }, 300);
+        }
+
+        async function performLocationSearch(query) {
+            const dropdown = document.getElementById('locationAutocomplete');
+            
+            try {
+                showLocationStatus('Searching...');
+                
+                const response = await fetch(
+                    `https://nominatim.openstreetmap.org/search?format=json&limit=5&q=${encodeURIComponent(query)}`
+                );
+                
+                const locations = await response.json();
+                
+                if (locations.length === 0) {
+                    showLocationStatus('No locations found');
+                    return;
+                }
+                
+                displayLocationResults(locations);
+                
+            } catch (error) {
+                console.error('Location search error:', error);
+                showLocationStatus('Search unavailable');
+            }
+        }
+
+        function displayLocationResults(locations) {
+            const dropdown = document.getElementById('locationAutocomplete');
+            
+            dropdown.innerHTML = locations.map(location => `
+                <div class="autocomplete-item" onclick="selectLocation('${location.display_name}', ${location.lat}, ${location.lon})">
+                    <div class="location-name">${location.display_name.split(',')[0]}</div>
+                    <div class="location-details">${location.display_name}</div>
+                </div>
+            `).join('');
+            
+            dropdown.style.display = 'block';
+        }
+
+        function selectLocation(name, lat, lon) {
+            document.getElementById('birthLocation').value = name;
+            currentLocationData = { name, lat, lon };
+            hideLocationDropdown();
+            validateLocation();
+            validateForm();
+        }
+
+        function showLocationStatus(message) {
+            const dropdown = document.getElementById('locationAutocomplete');
+            dropdown.innerHTML = `<div class="search-status loading">${message}</div>`;
+            dropdown.style.display = 'block';
+        }
+
+        function hideLocationDropdown() {
+            document.getElementById('locationAutocomplete').style.display = 'none';
+        }
+
+        // Unknown time functionality
+        function useUnknownTime() {
+            document.getElementById('birthHour').value = '12';
+            document.getElementById('birthMinute').value = '0';
+            document.getElementById('ampm').value = 'PM';
+            validateTime();
+            validateForm();
         }
 
         // Soul Age Calculation
-        function calculateSoulAge() {
-            if (AppState.isCalculating) return;
+        async function calculateSoulAge() {
+            const button = document.querySelector('.calculate-btn');
+            button.disabled = true;
+            button.textContent = '🔮 Calculating Your Soul Age...';
             
-            AppState.isCalculating = true;
+            // Simulate calculation time
+            await new Promise(resolve => setTimeout(resolve, 2000));
             
-            // Collect form data
-            const birthDate = new Date(document.getElementById('birthDate').value);
-            let hour = parseInt(document.getElementById('birthHour').value);
-            let minute = parseInt(document.getElementById('birthMinute').value) || 0;
-            let ampm = document.getElementById('ampm').value;
-            const lat = parseFloat(document.getElementById('latitude').value);
-            const lng = parseFloat(document.getElementById('longitude').value);
-            
-            // Handle unknown time - default to noon (12:00 PM)
-            let timeKnown = true;
-            if (!hour || !ampm) {
-                hour = 12;
-                minute = 0;
-                ampm = 'PM';
-                timeKnown = false;
-                AppState.timeEstimated = true;
-            }
-            
-            // Store in app state
-            AppState.birthData = {
-                date: birthDate,
-                hour: hour,
-                minute: minute,
-                ampm: ampm,
-                latitude: lat,
-                longitude: lng,
-                timeKnown: timeKnown
-            };
-            
-            // Show loading
-            document.getElementById('loading').classList.add('show');
-            document.getElementById('calculateBtn').disabled = true;
-            
-            // Simulate calculation
-            setTimeout(() => {
-                const results = performCalculation();
-                AppState.calculationResults = results;
+            try {
+                const results = performSoulAgeCalculation();
                 displayResults(results);
                 
-                document.getElementById('loading').classList.remove('show');
-                document.getElementById('calculateBtn').disabled = false;
-                AppState.isCalculating = false;
-            }, 2500);
+                // Scroll to results
+                document.getElementById('results').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+            } catch (error) {
+                console.error('Calculation error:', error);
+                alert('Sorry, there was an error calculating your soul age. Please try again.');
+            } finally {
+                button.disabled = false;
+                button.textContent = '✨ Calculate My Soul Age ✨';
+            }
         }
 
-        function performCalculation() {
-            const { date, hour, minute, ampm, latitude, longitude, timeKnown } = AppState.birthData;
+        function performSoulAgeCalculation() {
+            // Get form data
+            const birthDate = new Date(document.getElementById('birthDate').value);
+            const birthHour = document.getElementById('birthHour').value || '12';
+            const birthMinute = document.getElementById('birthMinute').value || '0';
+            const ampm = document.getElementById('ampm').value || 'PM';
             
-            // Convert to 24-hour
-            let hour24 = hour;
-            if (ampm === 'PM' && hour !== 12) hour24 += 12;
-            if (ampm === 'AM' && hour === 12) hour24 = 0;
+            // Convert to 24-hour time (defaulting to noon if not specified)
+            let hour24 = parseInt(birthHour);
+            if (ampm === 'PM' && hour24 !== 12) hour24 += 12;
+            if (ampm === 'AM' && hour24 === 12) hour24 = 0;
             
-            // Vedantic calculation based on birth chart
-            const dayOfYear = getDayOfYear(date);
-            const timeScore = (hour24 * 60 + minute) / 1440;
-            const latitudeModifier = Math.abs(latitude) / 90;
+            const birthTime = new Date(birthDate.getFullYear(), birthDate.getMonth(), birthDate.getDate(), hour24, parseInt(birthMinute));
             
-            // Base calculation
-            let baseAge = 200 + (dayOfYear * 1.1) + (latitudeModifier * 50);
+            // Calculate astrological factors
+            const astroFactors = calculateAstrologicalFactors(birthTime, currentLocationData);
             
-            // Adjust time weight based on whether it's known or estimated
-            const timeWeight = timeKnown ? 0.3 : 0.1; // Reduce time influence if estimated
-            baseAge += (timeScore * 150 * timeWeight);
+            // Get survey responses
+            const surveyResponses = getSurveyResponses();
             
-            // Apply survey modifiers
-            let surveyModifier = 0;
-            spiritualQuestions.forEach((question, index) => {
-                const answer = AppState.surveyAnswers[index];
-                if (answer !== undefined) {
-                    const normalizedAnswer = (answer / 4) - 0.5; // -0.5 to 0.5
-                    surveyModifier += normalizedAnswer * 100 * question.weight;
-                }
-            });
+            // Calculate soul age
+            const soulAge = calculateBaseSoulAge(astroFactors, surveyResponses);
             
-            let soulAge = Math.round(baseAge + surveyModifier);
-            
-            // Ensure within bounds
-            soulAge = Math.max(1, Math.min(777, soulAge));
+            // Determine stage and characteristics
+            const stage = determineSoulStage(soulAge);
+            const characteristics = getSoulCharacteristics(stage, soulAge);
             
             return {
-                soulAge: soulAge,
-                stage: getSoulStage(soulAge),
-                incarnationRange: getIncarnationRange(soulAge),
-                earthYears: Math.round(soulAge * 165), // Average 165 years between incarnations
-                spiralLevel: getSpiralLevel(soulAge),
-                remainingLives: Math.max(0, 777 - soulAge),
-                timeEstimated: !timeKnown
+                soulAge: Math.round(soulAge),
+                stage: stage.name,
+                stageDescription: stage.description,
+                range: stage.range,
+                earthYears: soulAge * 65, // Average human lifespan
+                spiralLevel: Math.ceil(soulAge / 111),
+                remainingLives: Math.max(0, 777 - Math.round(soulAge)),
+                confidence: calculateConfidence(astroFactors, surveyResponses),
+                characteristics: characteristics
             };
+        }
+
+        function calculateAstrologicalFactors(birthTime, location) {
+            // Simplified astrological calculation based on birth date and time
+            const dayOfYear = Math.floor((birthTime - new Date(birthTime.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            const hourOfDay = birthTime.getHours() + birthTime.getMinutes() / 60;
+            
+            // Mock Jaimini calculations
+            const atmakaraka = (dayOfYear * 7 + hourOfDay) % 9; // 0-8 representing planets
+            const arudhaLagna = (dayOfYear + hourOfDay * 15) % 12; // 0-11 representing houses
+            const charaKarakas = Array.from({length: 7}, (_, i) => (atmakaraka + i) % 9);
+            
+            return {
+                atmakaraka,
+                arudhaLagna,
+                charaKarakas,
+                dayOfYear,
+                hourOfDay
+            };
+        }
+
+        function getSurveyResponses() {
+            return {
+                q1: document.getElementById('q1').value,
+                q2: document.getElementById('q2').value,
+                q3: document.getElementById('q3').value,
+                q4: document.getElementById('q4').value,
+                q5: document.getElementById('q5').value
+            };
+        }
+
+        function calculateBaseSoulAge(astroFactors, surveyResponses) {
+            // Base calculation from astrological factors
+            let baseAge = astroFactors.dayOfYear + (astroFactors.hourOfDay * 10);
+            baseAge += (astroFactors.atmakaraka * 50);
+            baseAge += (astroFactors.arudhaLagna * 30);
+            
+            // Adjust based on survey responses
+            const surveyAdjustment = calculateSurveyAdjustment(surveyResponses);
+            baseAge += surveyAdjustment;
+            
+            // Normalize to 1-777 range
+            return Math.min(777, Math.max(1, baseAge % 777));
+        }
+
+        function calculateSurveyAdjustment(responses) {
+            let adjustment = 0;
+            
+            // Question 1: Life drive
+            const q1Map = { 'survival': -100, 'pleasure': -50, 'success': 0, 'relationships': 100, 'meaning': 200 };
+            adjustment += q1Map[responses.q1] || 0;
+            
+            // Question 2: Conflict handling
+            const q2Map = { 'avoid': -100, 'fight': -50, 'compete': 0, 'understand': 100, 'transcend': 200 };
+            adjustment += q2Map[responses.q2] || 0;
+            
+            // Question 3: Material possessions
+            const q3Map = { 'essential': -100, 'enjoy': -50, 'status': 0, 'tools': 100, 'burden': 200 };
+            adjustment += q3Map[responses.q3] || 0;
+            
+            // Question 4: Learning style
+            const q4Map = { 'repetition': -100, 'experience': -50, 'systems': 0, 'reflection': 100, 'intuition': 200 };
+            adjustment += q4Map[responses.q4] || 0;
+            
+            // Question 5: Attitude toward change
+            const q5Map = { 'resist': -100, 'excitement': -50, 'opportunity': 0, 'natural': 100, 'catalyst': 200 };
+            adjustment += q5Map[responses.q5] || 0;
+            
+            return adjustment;
+        }
+
+        function determineSoulStage(soulAge) {
+            if (soulAge <= 155) {
+                return {
+                    name: 'Infant Soul',
+                    description: 'You are in the early stages of human experience, learning basic survival and how to exist in a physical body.',
+                    range: [1, 155]
+                };
+            } else if (soulAge <= 310) {
+                return {
+                    name: 'Baby Soul',
+                    description: 'You are learning structure, rules, and how to belong to groups and communities.',
+                    range: [156, 310]
+                };
+            } else if (soulAge <= 465) {
+                return {
+                    name: 'Young Soul',
+                    description: 'You are focused on achievement, success, and making your mark in the world.',
+                    range: [311, 465]
+                };
+            } else if (soulAge <= 620) {
+                return {
+                    name: 'Mature Soul',
+                    description: 'You are exploring emotional depth, relationships, and authentic self-expression.',
+                    range: [466, 620]
+                };
+            } else {
+                return {
+                    name: 'Old Soul',
+                    description: 'You are seeking wisdom, spiritual truth, and ways to serve humanity\'s evolution.',
+                    range: [621, 777]
+                };
+            }
+        }
+
+        function calculateConfidence(astroFactors, surveyResponses) {
+            // Simple confidence calculation based on consistency of indicators
+            let score = 0;
+            
+            // Check if astrological and survey indicators align
+            const expectedSurveyStage = Math.floor((astroFactors.dayOfYear + astroFactors.atmakaraka * 50) / 155);
+            const surveyAdjustment = calculateSurveyAdjustment(surveyResponses);
+            const surveyStage = Math.floor((surveyAdjustment + 500) / 200);
+            
+            if (Math.abs(expectedSurveyStage - surveyStage) <= 1) score += 50;
+            if (astroFactors.atmakaraka > 6) score += 25; // Higher planets indicate more experience
+            if (currentLocationData) score += 25; // Having location data increases confidence
+            
+            if (score >= 75) return 'high';
+            if (score >= 50) return 'medium';
+            return 'low';
+        }
+
+        function getSoulCharacteristics(stage, soulAge) {
+            const characteristics = {
+                strengths: [],
+                challenges: [],
+                focus: [],
+                practices: []
+            };
+            
+            if (stage.name === 'Infant Soul') {
+                characteristics.strengths = [
+                    "Natural innocence and wonder",
+                    "Strong survival instincts", 
+                    "Ability to live in the present moment",
+                    "Direct, uncomplicated approach to life"
+                ];
+                characteristics.challenges = [
+                    "Fear of new experiences",
+                    "Difficulty with complex emotions",
+                    "Need for safety and routine",
+                    "Limited perspective on life's bigger picture"
+                ];
+                characteristics.focus = [
+                    "Basic survival and security",
+                    "Learning to navigate physical world",
+                    "Developing simple social skills",
+                    "Building trust in others"
+                ];
+                characteristics.practices = [
+                    "Grounding exercises and nature connection",
+                    "Simple meditation and breathing",
+                    "Gentle yoga and body awareness",
+                    "Creating safe, nurturing environments"
+                ];
+            } else if (stage.name === 'Baby Soul') {
+                characteristics.strengths = [
+                    "Strong sense of right and wrong",
+                    "Loyalty and commitment to groups",
+                    "Appreciation for tradition and order",
+                    "Reliable and responsible nature"
+                ];
+                characteristics.challenges = [
+                    "Rigidity and resistance to change",
+                    "Tendency to judge others harshly",
+                    "Fear of stepping outside comfort zone",
+                    "Difficulty accepting different viewpoints"
+                ];
+                characteristics.focus = [
+                    "Building stable communities and families",
+                    "Following moral and ethical guidelines",
+                    "Preserving traditions and values",
+                    "Creating order from chaos"
+                ];
+                characteristics.practices = [
+                    "Group worship or spiritual community",
+                    "Traditional meditation or prayer",
+                    "Service work within established organizations",
+                    "Study of moral and ethical teachings"
+                ];
+            } else if (stage.name === 'Young Soul') {
+                characteristics.strengths = [
+                    "High energy and ambition",
+                    "Natural leadership abilities",
+                    "Confidence and self-reliance",
+                    "Ability to manifest goals"
+                ];
+                characteristics.challenges = [
+                    "Ego-driven decision making",
+                    "Difficulty with emotional depth",
+                    "Tendency toward materialism",
+                    "Impatience with others' limitations"
+                ];
+                characteristics.focus = [
+                    "Achievement and worldly success",
+                    "Building personal power and influence",
+                    "Material accumulation and status",
+                    "Individual recognition and fame"
+                ];
+                characteristics.practices = [
+                    "Goal-setting and achievement practices",
+                    "Competitive sports and challenges",
+                    "Leadership development and networking",
+                    "Success-oriented meditation and visualization"
+                ];
+            } else if (stage.name === 'Mature Soul') {
+                characteristics.strengths = [
+                    "Deep emotional intelligence",
+                    "Capacity for intimate relationships",
+                    "Authenticity and self-awareness",
+                    "Natural counseling and healing abilities"
+                ];
+                characteristics.challenges = [
+                    "Emotional intensity and drama",
+                    "Difficulty with boundaries",
+                    "Tendency toward co-dependency",
+                    "Existential anxiety and questioning"
+                ];
+                characteristics.focus = [
+                    "Deep personal relationships",
+                    "Emotional healing and growth",
+                    "Authentic self-expression",
+                    "Psychological understanding"
+                ];
+                characteristics.practices = [
+                    "Therapy and counseling work",
+                    "Relationship and communication skills",
+                    "Emotional healing modalities",
+                    "Creative and artistic expression"
+                ];
+            } else { // Old Soul
+                characteristics.strengths = [
+                    "Natural wisdom and perspective",
+                    "Compassion for all beings",
+                    "Spiritual insight and intuition",
+                    "Ability to see the bigger picture"
+                ];
+                characteristics.challenges = [
+                    "Feeling disconnected from material world",
+                    "Difficulty relating to younger souls",
+                    "Tendency toward isolation",
+                    "Impatience with society's pace"
+                ];
+                characteristics.focus = [
+                    "Spiritual growth and enlightenment",
+                    "Service to humanity",
+                    "Teaching and sharing wisdom",
+                    "Simple, meaningful living"
+                ];
+                characteristics.practices = [
+                    "Meditation and contemplation",
+                    "Service work and volunteering",
+                    "Study of spiritual texts and teachings",
+                    "Mentoring and teaching others"
+                ];
+            }
+            
+            return characteristics;
         }
 
         function displayResults(results) {
-            const container = document.getElementById('resultsContainer');
-            
-            // Show time estimation notice if applicable
-            const timeNotice = document.getElementById('timeEstimatedNotice');
-            if (results.timeEstimated) {
-                timeNotice.style.display = 'block';
-            } else {
-                timeNotice.style.display = 'none';
-            }
-            
+            // Update main display
             document.getElementById('soulAgeNumber').textContent = `~${results.soulAge}`;
             document.getElementById('soulStage').textContent = results.stage;
-            document.getElementById('incarnationRange').textContent = results.incarnationRange;
-            document.getElementById('earthYears').textContent = `~${Math.round(results.earthYears / 1000)}k`;
-            document.getElementById('spiralLevel').textContent = `${results.spiralLevel}`;
+            document.getElementById('soulStageDescription').textContent = results.stageDescription;
+            document.getElementById('incarnationRange').textContent = 
+                `${results.range[0]}-${results.range[1]}`;
+            document.getElementById('earthYears').textContent = 
+                `~${Math.round(results.earthYears / 1000)}k`;
+            document.getElementById('spiralLevel').textContent = 
+                `${results.spiralLevel}${getOrdinalSuffix(results.spiralLevel)}`;
             document.getElementById('remainingLives').textContent = results.remainingLives;
             
-            container.classList.add('show');
-            container.scrollIntoView({ behavior: 'smooth' });
+            // Update confidence display
+            const confidenceDot = document.getElementById('confidenceDot');
+            const confidenceText = document.getElementById('confidenceText');
+            confidenceDot.className = `confidence-dot confidence-${results.confidence}`;
             
-            // Generate spiritual guidance
-            generateGuidance(results);
+            const confidenceLabels = {
+                'high': 'High Confidence',
+                'medium': 'Medium Confidence', 
+                'low': 'Low Confidence'
+            };
+            confidenceText.textContent = confidenceLabels[results.confidence];
+            
+            // Update detailed stage description
+            displayStageDescription(results.stage, results.stageDescription);
+            
+            // Update characteristics
+            displayCharacteristics(results.characteristics);
+            
+            // Show results
+            document.getElementById('results').classList.add('show');
         }
 
-        function generateGuidance(results) {
-            const guidanceContent = document.getElementById('guidanceContent');
-            const guidance = getGuidanceForSoulAge(results.soulAge, results.stage);
+        function displayStageDescription(stageName, stageDescription) {
+            const card = document.getElementById('stageDescriptionCard');
+            const title = document.getElementById('stageDescriptionTitle');
+            const text = document.getElementById('stageDescriptionText');
             
-            guidanceContent.innerHTML = `
-                <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px;">
-                    <h3 style="margin-bottom: 15px; font-size: 1.5rem;">Your Spiritual Path: ${results.stage}</h3>
-                    <p style="line-height: 1.7; opacity: 0.95;">${guidance.description}</p>
-                </div>
-                
-                <div class="stage-grid">
-                    <div class="stage-card">
-                        <div class="stage-title">🎯 Current Lessons</div>
-                        <div class="stage-description">${guidance.lessons}</div>
+            title.textContent = `Understanding Your ${stageName} Nature`;
+            text.textContent = stageDescription;
+            
+            // Add stage-specific styling
+            card.className = 'stage-description-card';
+            if (stageName.includes('Infant')) card.classList.add('infant');
+            else if (stageName.includes('Baby')) card.classList.add('baby');
+            else if (stageName.includes('Young')) card.classList.add('young');
+            else if (stageName.includes('Mature')) card.classList.add('mature');
+            else if (stageName.includes('Old')) card.classList.add('old');
+        }
+
+        function displayCharacteristics(characteristics) {
+            const container = document.getElementById('characteristicsDisplay');
+            
+            container.innerHTML = `
+                <div class="characteristics-grid">
+                    <div class="characteristic-card">
+                        <h3 class="characteristic-title">Your Strengths</h3>
+                        <ul class="characteristic-list">
+                            ${characteristics.strengths.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
                     </div>
-                    <div class="stage-card">
-                        <div class="stage-title">⚡ Spiritual Practices</div>
-                        <div class="stage-description">${guidance.practices}</div>
+                    <div class="characteristic-card">
+                        <h3 class="characteristic-title">Growth Challenges</h3>
+                        <ul class="characteristic-list">
+                            ${characteristics.challenges.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
                     </div>
-                    <div class="stage-card">
-                        <div class="stage-title">🌟 Soul Mission</div>
-                        <div class="stage-description">${guidance.mission}</div>
+                    <div class="characteristic-card">
+                        <h3 class="characteristic-title">Life Focus Areas</h3>
+                        <ul class="characteristic-list">
+                            ${characteristics.focus.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="characteristic-card">
+                        <h3 class="characteristic-title">Recommended Practices</h3>
+                        <ul class="characteristic-list">
+                            ${characteristics.practices.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
                     </div>
                 </div>
             `;
+        }
+
+        function getOrdinalSuffix(number) {
+            const suffixes = ['th', 'st', 'nd', 'rd'];
+            const value = number % 100;
+            return suffixes[(value - 20) % 10] || suffixes[value] || suffixes[0];
+        }
+
+        // FAQ functionality
+        function toggleFaq(questionElement) {
+            const answer = questionElement.nextElementSibling;
+            const toggle = questionElement.querySelector('.faq-toggle');
             
-            guidanceContent.style.display = 'block';
-        }
-
-        // Helper Functions
-        function getDayOfYear(date) {
-            const start = new Date(date.getFullYear(), 0, 0);
-            const diff = date - start;
-            const oneDay = 1000 * 60 * 60 * 24;
-            return Math.floor(diff / oneDay);
-        }
-
-        function getSoulStage(age) {
-            if (age <= 35) return "Infant Soul - Learning Survival";
-            if (age <= 105) return "Baby Soul - Seeking Structure";
-            if (age <= 210) return "Young Soul - Building Achievement";
-            if (age <= 350) return "Mature Soul - Heart Chakra Activation";
-            if (age <= 490) return "Old Soul - Wisdom Integration";
-            if (age <= 700) return "7th Level Soul - Transcendence Preparation";
-            return "Advanced Soul - Liberation Approach";
-        }
-
-        function getIncarnationRange(age) {
-            const margin = 15;
-            return `${Math.max(1, age - margin)}-${Math.min(777, age + margin)}`;
-        }
-
-        function getSpiralLevel(age) {
-            return Math.ceil(age / 111);
-        }
-
-        function getGuidanceForSoulAge(age, stage) {
-            if (age <= 105) {
-                return {
-                    description: "You are in the foundational stages of soul development, focused on learning basic survival and civilizational skills.",
-                    lessons: "Master physical plane basics, develop moral compass, learn from established structures and authorities.",
-                    practices: "Structured meditation, traditional spiritual practices, community involvement, following established wisdom traditions.",
-                    mission: "Build a strong foundation for future growth while serving your community through practical means."
-                };
-            } else if (age <= 210) {
-                return {
-                    description: "You are in an ambitious phase, focused on achievement, success, and making your mark on the world.",
-                    lessons: "Balance ambition with compassion, learn leadership skills, understand power dynamics and responsibility.",
-                    practices: "Goal-setting meditation, visualization, networking for positive change, competitive sports or business ventures.",
-                    mission: "Build civilizations, create innovations, and lead others while learning ethical use of power."
-                };
-            } else if (age <= 350) {
-                return {
-                    description: "You are entering emotional and relational mastery, seeking deeper meaning and authentic connections.",
-                    lessons: "Develop emotional intelligence, practice unconditional love, heal relationship patterns, embrace vulnerability.",
-                    practices: "Heart-centered meditation, therapy or counseling, creative expression, intimate relationship work.",
-                    mission: "Heal collective emotional wounds, teach empathy and compassion, bridge different perspectives."
-                };
-            } else if (age <= 490) {
-                return {
-                    description: "You are in the wisdom integration phase, naturally drawn to teaching, philosophy, and spiritual service.",
-                    lessons: "Detach from drama, integrate all life experiences into wisdom, develop universal perspective.",
-                    practices: "Contemplative meditation, teaching or mentoring, philosophical study, service to humanity.",
-                    mission: "Share wisdom through teaching, writing, or counseling; guide younger souls on their journey."
-                };
+            if (answer.classList.contains('show')) {
+                answer.classList.remove('show');
+                toggle.classList.remove('rotated');
             } else {
-                return {
-                    description: "You are in advanced stages of soul evolution, preparing for final lessons before liberation from the physical plane.",
-                    lessons: "Complete integration of all soul experiences, prepare for transcendence, serve as a bridge between realms.",
-                    practices: "Advanced meditation techniques, energy healing, channeling or mediumship, global service projects.",
-                    mission: "Serve as a spiritual teacher or guide for humanity, facilitate planetary healing and consciousness evolution."
-                };
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer.show').forEach(openAnswer => {
+                    openAnswer.classList.remove('show');
+                    openAnswer.previousElementSibling.querySelector('.faq-toggle').classList.remove('rotated');
+                });
+                
+                // Open this FAQ
+                answer.classList.add('show');
+                toggle.classList.add('rotated');
             }
         }
 
-        // Error Display Functions
-        function showError(id, message) {
-            const errorEl = document.getElementById(id);
-            if (errorEl) {
-                errorEl.textContent = message;
-                errorEl.classList.add('show');
+        // Click outside to close location dropdown
+        document.addEventListener('click', function(event) {
+            const locationInput = document.getElementById('birthLocation');
+            const dropdown = document.getElementById('locationAutocomplete');
+            
+            if (!locationInput.contains(event.target) && !dropdown.contains(event.target)) {
+                hideLocationDropdown();
             }
-        }
-
-        function hideError(id) {
-            const errorEl = document.getElementById(id);
-            if (errorEl) {
-                errorEl.classList.remove('show');
-            }
-        }
-
-        function showValidation(id, isValid) {
-            const indicator = document.getElementById(id);
-            if (indicator) {
-                indicator.className = `validation-indicator ${isValid ? 'valid' : 'invalid'}`;
-            }
-        }
-
-        // Initialize the app when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initApp);
+        });
     </script>
 </body>
 </html>
