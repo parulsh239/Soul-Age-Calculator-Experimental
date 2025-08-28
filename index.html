@@ -897,7 +897,24 @@
     <div id="timeError" class="error-message"></div>
 </div>
 
-            <!-- Soul Insights Survey -->
+                <div class="input-group">
+    <label class="input-label">Birth Location *</label>
+    <div class="location-input-container">
+        <input type="text" 
+               id="birthLocation" 
+               class="input-field" 
+               placeholder="e.g., New York, London, Mumbai..."
+               onchange="validateLocation()"
+               oninput="searchLocation()"
+               autocomplete="off"
+               required>
+        <div id="locationAutocomplete" class="autocomplete-dropdown"></div>
+    </div>
+    <span id="locationValidation" class="validation-icon">✓</span>
+    <div id="locationError" class="error-message"></div>
+</div> 
+                
+                <!-- Soul Insights Survey -->
             <div class="section">
                 <div class="section-header">
                     <span class="section-icon">🧿</span>
