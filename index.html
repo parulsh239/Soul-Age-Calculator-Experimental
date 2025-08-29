@@ -1135,10 +1135,54 @@
                 </div>
             </div>
 
-            <button class="calculate-btn" onclick="calculateSoulAge()" disabled>
-                ✨ Calculate My Soul Age ✨
-            </button>
+           <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 30px 0;">
+    <button class="calculate-btn" onclick="calculateSoulAge()" disabled>
+        ✨ Calculate My Soul Age ✨
+    </button>
+    <button class="calculate-btn" onclick="calculateJaiminiChart()" disabled style="background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);">
+        🔮 Calculate Jaimini Chart 🔮
+    </button>
+</div>
+<!-- Jaimini Chart Results Section -->
+<div id="jaimini-results" class="results-container">
+    <div class="soul-age-display" style="background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);">
+        <div class="soul-age-number" style="font-size: 2.5rem;">🔮 Jaimini Chart Analysis</div>
+        <div class="soul-stage" id="jaiminiTitle">Your Karmic Blueprint</div>
+        <div class="soul-stage-description" id="jaiminiDescription"></div>
 
+        <div class="incarnation-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="atmakaraka">-</div>
+                <div class="stat-label">Atmakaraka Planet</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="arudhaLagna">-</div>
+                <div class="stat-label">Arudha Lagna</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="karmicTheme">-</div>
+                <div class="stat-label">Karmic Theme</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="soulLesson">-</div>
+                <div class="stat-label">Primary Soul Lesson</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jaimini Analysis Cards -->
+    <div id="jaiminiAnalysis" class="section">
+        <div class="section-header">
+            <span class="section-icon">⭐</span>
+            <h2 class="section-title">Your Jaimini Analysis</h2>
+        </div>
+        <div id="jaiminiCards">
+            <!-- Will be populated by JavaScript -->
+        </div>
+    </div>
+</div>
+
+            
             <!-- Results Section -->
             <div id="results" class="results-container">
                 <div class="soul-age-display">
@@ -1709,21 +1753,28 @@
             return true;
         }
 
-        function validateForm() {
-            const dateValid = validateDate();
-            const timeValid = validateTime();
-            const locationValid = validateLocation();
-            
-            // Check survey questions
-            const surveyValid = ['q1', 'q2', 'q3', 'q4', 'q5'].every(id => 
-                document.getElementById(id).value !== ''
-            );
-            
-            const allValid = dateValid && timeValid && locationValid && surveyValid;
-            document.querySelector('.calculate-btn').disabled = !allValid;
-            
-            return allValid;
-        }
+      function validateForm() {
+    const dateValid = validateDate();
+    const timeValid = validateTime();
+    const locationValid = validateLocation();
+    
+    // Check survey questions
+    const surveyValid = ['q1', 'q2', 'q3', 'q4', 'q5'].every(id => 
+        document.getElementById(id).value !== ''
+    );
+    
+    const basicInfoValid = dateValid && timeValid && locationValid;
+    const allValid = basicInfoValid && surveyValid;
+    
+    // Enable/disable buttons based on requirements
+    const soulAgeBtn = document.querySelector('button[onclick="calculateSoulAge()"]');
+    const jaiminiBtn = document.querySelector('button[onclick="calculateJaiminiChart()"]');
+    
+    if (soulAgeBtn) soulAgeBtn.disabled = !allValid;
+    if (jaiminiBtn) jaiminiBtn.disabled = !basicInfoValid; // Jaimini only needs basic info
+    
+    return allValid;
+}
 
         function showError(errorId, message) {
             const errorEl = document.getElementById(errorId);
@@ -2244,7 +2295,162 @@
             const value = number % 100;
             return suffixes[(value - 20) % 10] || suffixes[value] || suffixes[0];
         }
+// Jaimini Chart Calculation
+async function calculateJaiminiChart() {
+    const button = event.target;
+    button.disabled = true;
+    button.textContent = '🔮 Calculating Jaimini Chart...';
+    
+    // Check if birth info is filled
+    const dateValid = validateDate();
+    const locationValid = validateLocation();
+    
+    if (!dateValid || !locationValid) {
+        alert('Please fill in your birth date and location first.');
+        button.disabled = false;
+        button.textContent = '🔮 Calculate Jaimini Chart 🔮';
+        return;
+    }
+    
+    // Simulate calculation time
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    try {
+        const jaiminiResults = performJaiminiCalculation();
+        displayJaiminiResults(jaiminiResults);
+        
+        // Scroll to results
+        document.getElementById('jaimini-results').scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+        
+    } catch (error) {
+        console.error('Jaimini calculation error:', error);
+        alert('Sorry, there was an error calculating your Jaimini chart. Please try again.');
+    } finally {
+        button.disabled = false;
+        button.textContent = '🔮 Calculate Jaimini Chart 🔮';
+    }
+}
 
+function performJaiminiCalculation() {
+    const birthDate = new Date(document.getElementById('birthDate').value);
+    const birthHour = document.getElementById('birthHour').value || '12';
+    const birthMinute = document.getElementById('birthMinute').value || '0';
+    const ampm = document.getElementById('ampm').value || 'PM';
+    
+    // Convert to 24-hour time
+    let hour24 = parseInt(birthHour);
+    if (ampm === 'PM' && hour24 !== 12) hour24 += 12;
+    if (ampm === 'AM' && hour24 === 12) hour24 = 0;
+    
+    const birthTime = new Date(birthDate.getFullYear(), birthDate.getMonth(), birthDate.getDate(), hour24, parseInt(birthMinute));
+    const astroFactors = calculateAstrologicalFactors(birthTime, currentLocationData);
+    
+    // Jaimini-specific calculations
+    const planets = ['Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn', 'Rahu', 'Ketu'];
+    const houses = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th'];
+    const karmicThemes = ['Dharma', 'Artha', 'Kama', 'Moksha'];
+    const soulLessons = ['Power', 'Love', 'Wisdom', 'Service', 'Expression', 'Harmony', 'Truth'];
+    
+    const atmakaraka = planets[astroFactors.atmakaraka % planets.length];
+    const arudhaLagna = houses[astroFactors.arudhaLagna];
+    const karmicTheme = karmicThemes[astroFactors.dayOfYear % 4];
+    const soulLesson = soulLessons[(astroFactors.atmakaraka + astroFactors.arudhaLagna) % soulLessons.length];
+    
+    return {
+        atmakaraka,
+        arudhaLagna,
+        karmicTheme,
+        soulLesson,
+        analysis: generateJaiminiAnalysis(atmakaraka, karmicTheme, soulLesson)
+    };
+}
+
+function generateJaiminiAnalysis(atmakaraka, karmicTheme, soulLesson) {
+    const analyses = {
+        'Sun': {
+            title: 'Solar Atmakaraka - The Leader\'s Path',
+            description: 'Your soul seeks to learn leadership, self-expression, and personal authority. You came to develop confidence and the ability to shine your unique light.',
+            traits: ['Natural leadership abilities', 'Strong sense of identity', 'Creative self-expression', 'Desire for recognition']
+        },
+        'Moon': {
+            title: 'Lunar Atmakaraka - The Nurturer\'s Journey',
+            description: 'Your soul is learning about emotions, nurturing, and intuitive wisdom. You came to develop emotional intelligence and caring for others.',
+            traits: ['Deep emotional sensitivity', 'Natural nurturing instincts', 'Strong intuition', 'Connection to the feminine principle']
+        },
+        'Mars': {
+            title: 'Martian Atmakaraka - The Warrior\'s Quest',
+            description: 'Your soul seeks to master courage, action, and personal will. You came to learn how to fight for what\'s right and overcome obstacles.',
+            traits: ['Natural courage and bravery', 'Strong competitive spirit', 'Ability to take decisive action', 'Warrior mentality']
+        },
+        'Mercury': {
+            title: 'Mercurial Atmakaraka - The Messenger\'s Mission',
+            description: 'Your soul is learning communication, intelligence, and the power of the mind. You came to master information and connect ideas.',
+            traits: ['Quick mental abilities', 'Natural communication skills', 'Love of learning', 'Adaptability and versatility']
+        },
+        'Jupiter': {
+            title: 'Jupiterian Atmakaraka - The Teacher\'s Path',
+            description: 'Your soul seeks wisdom, teaching, and spiritual growth. You came to expand consciousness and guide others to higher understanding.',
+            traits: ['Natural wisdom and knowledge', 'Teaching and mentoring abilities', 'Spiritual inclinations', 'Optimistic worldview']
+        },
+        'Venus': {
+            title: 'Venusian Atmakaraka - The Artist\'s Journey',
+            description: 'Your soul is learning about love, beauty, and harmony. You came to master relationships and create beauty in the world.',
+            traits: ['Appreciation for beauty', 'Natural artistic abilities', 'Strong relationship focus', 'Desire for harmony']
+        },
+        'Saturn': {
+            title: 'Saturnian Atmakaraka - The Master\'s Challenge',
+            description: 'Your soul seeks to learn discipline, responsibility, and mastery through challenges. You came to build lasting structures and wisdom.',
+            traits: ['Strong sense of responsibility', 'Natural discipline', 'Ability to work through challenges', 'Focus on long-term goals']
+        }
+    };
+    
+    return analyses[atmakaraka] || analyses['Sun'];
+}
+
+function displayJaiminiResults(results) {
+    // Update main display
+    document.getElementById('atmakaraka').textContent = results.atmakaraka;
+    document.getElementById('arudhaLagna').textContent = results.arudhaLagna;
+    document.getElementById('karmicTheme').textContent = results.karmicTheme;
+    document.getElementById('soulLesson').textContent = results.soulLesson;
+    
+    document.getElementById('jaiminiDescription').textContent = results.analysis.description;
+    
+    // Create analysis cards
+    const cardsContainer = document.getElementById('jaiminiCards');
+    cardsContainer.innerHTML = `
+        <div class="characteristic-card" style="margin-bottom: 20px;">
+            <h3 class="characteristic-title">${results.analysis.title}</h3>
+            <p style="color: #6B7280; line-height: 1.6; margin-bottom: 15px;">${results.analysis.description}</p>
+            <ul class="characteristic-list">
+                ${results.analysis.traits.map(trait => `<li>${trait}</li>`).join('')}
+            </ul>
+        </div>
+        
+        <div class="characteristic-card">
+            <h3 class="characteristic-title">Your Karmic Theme: ${results.karmicTheme}</h3>
+            <p style="color: #6B7280; line-height: 1.6;">
+                ${getKarmicThemeDescription(results.karmicTheme)}
+            </p>
+        </div>
+    `;
+    
+    // Show results
+    document.getElementById('jaimini-results').classList.add('show');
+}
+
+function getKarmicThemeDescription(theme) {
+    const descriptions = {
+        'Dharma': 'Your soul is focused on learning righteous living, moral duty, and spiritual principles. This lifetime is about aligning with your higher purpose.',
+        'Artha': 'Your soul is learning about material success, security, and practical achievement. This lifetime involves mastering the material world.',
+        'Kama': 'Your soul is exploring desires, relationships, and emotional fulfillment. This lifetime is about understanding love and passion.',
+        'Moksha': 'Your soul is seeking liberation, spiritual realization, and transcendence. This lifetime is about spiritual awakening and freedom.'
+    };
+    return descriptions[theme] || descriptions['Dharma'];
+}
         // FAQ functionality
         function toggleFaq(questionElement) {
             const answer = questionElement.nextElementSibling;
