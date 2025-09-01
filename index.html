@@ -2200,7 +2200,7 @@
             const dropdown = document.getElementById('locationAutocomplete');
             
             dropdown.innerHTML = locations.map(location => `
-                <div class="autocomplete-item" onclick="selectLocation('${location.display_name}', ${location.lat}, ${location.lon})">
+                <div class="autocomplete-item" onclick="selectLocation('${location.display_name.replace(/'/g, "&#39;")}', ${location.lat}, ${location.lon})">
                     <div class="location-name">${location.display_name.split(',')[0]}</div>
                     <div class="location-details">${location.display_name}</div>
                 </div>
@@ -2274,7 +2274,7 @@
             const dropdown = document.getElementById('jaiminiLocationAutocomplete');
             
             dropdown.innerHTML = locations.map(location => `
-                <div class="autocomplete-item" onclick="selectJaiminiLocation('${location.display_name}', ${location.lat}, ${location.lon})">
+                <div class="autocomplete-item" onclick="selectJaiminiLocation('${location.display_name.replace(/'/g, "&#39;")}', ${location.lat}, ${location.lon})">
                     <div class="location-name">${location.display_name.split(',')[0]}</div>
                     <div class="location-details">${location.display_name}</div>
                 </div>
