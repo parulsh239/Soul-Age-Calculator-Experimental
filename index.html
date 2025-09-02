@@ -1429,21 +1429,68 @@
                 return false;
             }
             
-            const date = new Date(dateValue);
-            
-            if (isNaN(date.getTime())) {
-                showError('dateError', 'Please enter a valid date');
+            // Parse the date string
+            const dateParts = dateValue.split('-');
+            if (dateParts.length !== 3) {
+                showError('dateError', 'Invalid date format');
                 return false;
             }
             
-            const now = new Date();
-            const minDate = new Date(now.getFullYear() - 150, 0, 1);
+            const year = parseInt(dateParts[0]);
+            const month = parseInt(dateParts[1]);
+            const day = parseInt(dateParts[2]);
             
+            // Validate year - must be 4 digits and reasonable range
+            const currentYear = new Date().getFullYear();
+            if (isNaN(year) || year < 1000 || year > 9999) {
+                showError('dateError', 'Please enter a valid 4-digit year');
+                return false;
+            }
+            
+            if (year < (currentYear - 150)) {
+                showError('dateError', 'Birth year cannot be more than 150 years ago');
+                return false;
+            }
+            
+            if (year > currentYear) {
+                showError('dateError', 'Birth year cannot be in the future');
+                return false;
+            }
+            
+            // Validate month
+            if (isNaN(month) || month < 1 || month > 12) {
+                showError('dateError', 'Month must be between 1 and 12');
+                return false;
+            }
+            
+            // Validate day based on month and year
+            const daysInMonth = new Date(year, month, 0).getDate();
+            if (isNaN(day) || day < 1 || day > daysInMonth) {
+                showError('dateError', 'Day must be between 1 and ' + daysInMonth + ' for this month');
+                return false;
+            }
+            
+            // Create date object and verify it's valid
+            const date = new Date(year, month - 1, day);
+            
+            // Double-check the date object created correctly
+            if (date.getFullYear() !== year || 
+                date.getMonth() !== month - 1 || 
+                date.getDate() !== day) {
+                showError('dateError', 'Invalid date combination');
+                return false;
+            }
+            
+            // Check if date is in the future
+            const now = new Date();
+            now.setHours(0, 0, 0, 0);
             if (date > now) {
                 showError('dateError', 'Birth date cannot be in the future');
                 return false;
             }
             
+            // Check if date is too far in the past
+            const minDate = new Date(currentYear - 150, 0, 1);
             if (date < minDate) {
                 showError('dateError', 'Birth date seems too far in the past');
                 return false;
