@@ -13,18 +13,9 @@
     <meta http-equiv="Referrer-Policy" content="no-referrer">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     
-    <!-- SEO & Privacy Compliant Meta Tags -->
-    <meta name="description" content="Discover your soul's evolutionary journey through 777 incarnations using Vedantic wisdom, Theosophical teachings, and Jaimini astrology. Complete karaka analysis included.">
-    <meta name="keywords" content="soul age, 777 incarnations, Vedanta, Theosophy, spiritual evolution, Jaimini astrology, karma, reincarnation, atmakaraka, karakas">
-    <meta name="author" content="Soul Age Calculator">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Privacy & Security -->
-    <meta name="privacy" content="No user data collected or stored">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Soul Age Calculator - Complete Jaimini & Vedantic Analysis">
-    <meta property="og:description" content="Calculate your position in the 777-incarnation journey with complete Jaimini Karaka analysis.">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover your soul's evolutionary journey through 777 incarnations using Vedantic wisdom, Theosophical teachings, and Jaimini astrology.">
+    <meta name="keywords" content="soul age, 777 incarnations, Vedanta, Theosophy, spiritual evolution, Jaimini astrology, karma, reincarnation">
     
     <style>
         :root {
@@ -148,12 +139,8 @@
         }
 
         @keyframes slideIn {
-            from {
-                transform: scaleX(0);
-            }
-            to {
-                transform: scaleX(1);
-            }
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
         }
 
         .content {
@@ -543,13 +530,6 @@
             max-height: 1000px;
         }
 
-        .chart-container {
-            width: 100%;
-            height: 400px;
-            margin: 20px 0;
-            position: relative;
-        }
-
         .tooltip {
             position: relative;
             display: inline-block;
@@ -609,31 +589,12 @@
         }
 
         @media (max-width: 768px) {
-            .title {
-                font-size: 2rem;
-            }
-            
-            .content {
-                padding: 20px;
-            }
-            
-            .date-input-grid,
-            .time-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tabs {
-                overflow-x: auto;
-            }
-
-            .tab {
-                font-size: 0.85rem;
-                padding: 15px 10px;
-            }
-
-            .karaka-grid {
-                grid-template-columns: 1fr;
-            }
+            .title { font-size: 2rem; }
+            .content { padding: 20px; }
+            .date-input-grid, .time-grid { grid-template-columns: 1fr; }
+            .tabs { overflow-x: auto; }
+            .tab { font-size: 0.85rem; padding: 15px 10px; }
+            .karaka-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -674,7 +635,6 @@
         <div class="content">
             <!-- Tab 1: Calculator -->
             <div id="calculator-tab" class="tab-content active">
-                <!-- Birth Information -->
                 <div class="section">
                     <div class="section-header">
                         <span class="section-icon">📅</span>
@@ -686,15 +646,8 @@
                         <div class="date-input-grid">
                             <div>
                                 <label style="font-size: 0.9rem; color: #6B7280;">Day</label>
-                                <input type="number" 
-                                       id="birthDay" 
-                                       class="input-field" 
-                                       placeholder="DD" 
-                                       min="1" 
-                                       max="31"
-                                       onchange="validateDate()"
-                                       oninput="validateDate()"
-                                       required>
+                                <input type="number" id="birthDay" class="input-field" placeholder="DD" 
+                                       min="1" max="31" onchange="validateDate()" oninput="validateDate()" required>
                             </div>
                             <div>
                                 <label style="font-size: 0.9rem; color: #6B7280;">Month</label>
@@ -716,15 +669,8 @@
                             </div>
                             <div>
                                 <label style="font-size: 0.9rem; color: #6B7280;">Year</label>
-                                <input type="number" 
-                                       id="birthYear" 
-                                       class="input-field" 
-                                       placeholder="YYYY" 
-                                       min="1874"
-                                       max="2025"
-                                       onchange="validateDate()"
-                                       oninput="validateDate()"
-                                       required>
+                                <input type="number" id="birthYear" class="input-field" placeholder="YYYY" 
+                                       min="1874" max="2025" onchange="validateDate()" oninput="validateDate()" required>
                             </div>
                         </div>
                         <span id="dateValidation" class="validation-icon">✓</span>
@@ -736,7 +682,7 @@
                             Birth Time (Optional - defaults to noon if not provided)
                             <span class="tooltip">
                                 <span class="tooltip-icon">ℹ️</span>
-                                <span class="tooltip-text">Accurate birth time enables precise Jaimini Karaka calculations and soul age determination</span>
+                                <span class="tooltip-text">Accurate birth time enables precise Jaimini Karaka calculations</span>
                             </span>
                         </label>
                         <div class="time-grid">
@@ -760,12 +706,8 @@
                             </div>
                             <div>
                                 <label style="font-size: 0.9rem; color: #6B7280;">Minute</label>
-                                <input type="number" id="birthMinute" class="input-field" 
-                                       placeholder="MM" 
-                                       min="0" 
-                                       max="59" 
-                                       onchange="validateTime()"
-                                       oninput="validateTime()">
+                                <input type="number" id="birthMinute" class="input-field" placeholder="MM" 
+                                       min="0" max="59" onchange="validateTime()" oninput="validateTime()">
                             </div>
                             <div>
                                 <label style="font-size: 0.9rem; color: #6B7280;">AM/PM</label>
@@ -788,16 +730,12 @@
                             Birth Location *
                             <span class="tooltip">
                                 <span class="tooltip-icon">ℹ️</span>
-                                <span class="tooltip-text">Location is essential for calculating planetary positions and karmic influences</span>
+                                <span class="tooltip-text">Location is essential for calculating planetary positions</span>
                             </span>
                         </label>
                         <div class="location-input-container">
-                            <input type="text" 
-                                   id="birthLocation" 
-                                   class="input-field" 
-                                   placeholder="e.g., New York, London, Mumbai..."
-                                   autocomplete="off"
-                                   required>
+                            <input type="text" id="birthLocation" class="input-field" 
+                                   placeholder="e.g., New York, London, Mumbai..." autocomplete="off" required>
                         </div>
                         <span id="locationValidation" class="validation-icon">✓</span>
                         <div id="locationError" class="error-message"></div>
@@ -819,33 +757,7 @@
                         <h2 class="section-title">Jaimini Karaka System</h2>
                     </div>
                     <div id="jaiminiContent">
-                        <p style="margin-bottom: 20px;">The Jaimini system uses Karakas (significators) to understand the soul's journey and purpose. Calculate your birth information first to see your personal Karaka analysis.</p>
-                        
-                        <div class="wisdom-quote">
-                            "The Atmakaraka is the King of the horoscope, representing the soul's deepest desires and the lessons it must learn in this incarnation." - Maharishi Jaimini
-                        </div>
-
-                        <div class="accordion">
-                            <div class="accordion-item">
-                                <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <span>Understanding the Seven Karakas</span>
-                                    <span>▼</span>
-                                </div>
-                                <div class="accordion-content">
-                                    <h4>The Seven Chara Karakas:</h4>
-                                    <ul style="list-style: none; padding: 0;">
-                                        <li style="margin: 10px 0;"><strong>1. Atmakaraka (AK)</strong> - The Soul Significator: Represents the soul's desire and primary lesson</li>
-                                        <li style="margin: 10px 0;"><strong>2. Amatyakaraka (AmK)</strong> - The Mind/Career Significator: Shows career path and mental inclinations</li>
-                                        <li style="margin: 10px 0;"><strong>3. Bhratrikaraka (BK)</strong> - The Sibling Significator: Represents siblings, courage, and initiatives</li>
-                                        <li style="margin: 10px 0;"><strong>4. Matrikaraka (MK)</strong> - The Mother Significator: Shows mother, nurturing, and education</li>
-                                        <li style="margin: 10px 0;"><strong>5. Pitrikaraka (PiK)</strong> - The Father Significator: Represents father, authority, and guidance</li>
-                                        <li style="margin: 10px 0;"><strong>6. Putrakaraka (PuK)</strong> - The Children Significator: Shows children, creativity, and intelligence</li>
-                                        <li style="margin: 10px 0;"><strong>7. Gnatikaraka (GK)</strong> - The Relatives/Obstacles Significator: Represents challenges and competitors</li>
-                                        <li style="margin: 10px 0;"><strong>8. Darakaraka (DK)</strong> - The Spouse Significator: Shows spouse and partnerships</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <p>Calculate your birth information to see your personal Jaimini Karaka analysis.</p>
                     </div>
                 </div>
             </div>
@@ -858,15 +770,7 @@
                         <h2 class="section-title">Comprehensive Soul Analysis</h2>
                     </div>
                     <div id="detailedContent">
-                        <p>Your detailed soul analysis will appear here after calculation. This includes:</p>
-                        <ul style="list-style: none; padding: 20px 0;">
-                            <li style="margin: 10px 0;">✨ Complete 777 incarnation position</li>
-                            <li style="margin: 10px 0;">🎯 Current soul stage and level</li>
-                            <li style="margin: 10px 0;">📊 Karmic debt analysis</li>
-                            <li style="margin: 10px 0;">🔮 Future incarnation predictions</li>
-                            <li style="margin: 10px 0;">💫 Soul purpose revelation</li>
-                            <li style="margin: 10px 0;">🌟 Spiritual gifts and challenges</li>
-                        </ul>
+                        <p>Your detailed soul analysis will appear here after calculation.</p>
                     </div>
                 </div>
             </div>
@@ -878,64 +782,10 @@
                         <span class="section-icon">📖</span>
                         <h2 class="section-title">The 777 Incarnation Journey</h2>
                     </div>
-                    
                     <div class="wisdom-quote">
-                        "The soul, in its journey towards perfection, passes through 777 incarnations, each one a step in the grand staircase of consciousness." - Ancient Vedantic Text
+                        "The soul, in its journey towards perfection, passes through 777 incarnations." - Ancient Vedantic Text
                     </div>
-
-                    <h3 style="color: var(--primary); margin: 20px 0;">The Seven Stages of Soul Evolution</h3>
-                    
-                    <div class="stage-indicator">
-                        <div class="stage-item">
-                            <div class="stage-number">1</div>
-                            <div class="stage-label">Mineral</div>
-                        </div>
-                        <div class="stage-item">
-                            <div class="stage-number">2</div>
-                            <div class="stage-label">Plant</div>
-                        </div>
-                        <div class="stage-item">
-                            <div class="stage-number">3</div>
-                            <div class="stage-label">Animal</div>
-                        </div>
-                        <div class="stage-item">
-                            <div class="stage-number">4</div>
-                            <div class="stage-label">Human</div>
-                        </div>
-                        <div class="stage-item">
-                            <div class="stage-number">5</div>
-                            <div class="stage-label">Astral</div>
-                        </div>
-                        <div class="stage-item">
-                            <div class="stage-number">6</div>
-                            <div class="stage-label">Celestial</div>
-                        </div>
-                        <div class="stage-item">
-                            <div class="stage-number">7</div>
-                            <div class="stage-label">Divine</div>
-                        </div>
-                    </div>
-
-                    <p style="margin-top: 20px; line-height: 1.8;">
-                        According to Theosophical and Vedantic teachings, every soul must complete exactly 777 incarnations 
-                        to achieve moksha (liberation). This sacred number represents the complete spiral of evolution through 
-                        seven planes of existence, each containing 111 incarnations.
-                    </p>
-
-                    <div class="accordion" style="margin-top: 30px;">
-                        <div class="accordion-item">
-                            <div class="accordion-header" onclick="toggleAccordion(this)">
-                                <span>The Mathematics of Soul Evolution</span>
-                                <span>▼</span>
-                            </div>
-                            <div class="accordion-content">
-                                <p><strong>777 = 7 × 111</strong></p>
-                                <p>Seven represents the cosmic planes of existence</p>
-                                <p>111 represents the trinity (1+1+1) at each level</p>
-                                <p>Together they form the complete journey of consciousness</p>
-                            </div>
-                        </div>
-                    </div>
+                    <p>According to Theosophical and Vedantic teachings, every soul must complete exactly 777 incarnations to achieve moksha (liberation).</p>
                 </div>
             </div>
 
@@ -946,75 +796,33 @@
                         <span class="section-icon">🎭</span>
                         <h2 class="section-title">The Seven Stages of Soul Development</h2>
                     </div>
-
                     <div class="result-card">
-                        <h3>Stage 1: Infant Soul (Incarnations 1-111)</h3>
-                        <p>The soul begins its journey, learning basic survival and experiencing physical existence for the first time. Focus is on understanding the material world and basic cause-and-effect relationships.</p>
-                        <ul style="margin-top: 10px; padding-left: 20px;">
-                            <li>Primary lesson: Physical survival</li>
-                            <li>Consciousness: Instinctual</li>
-                            <li>Challenge: Fear and basic needs</li>
-                        </ul>
+                        <h3>Stage 1: Infant Soul (1-111)</h3>
+                        <p>Learning basic survival and experiencing physical existence.</p>
                     </div>
-
                     <div class="result-card">
-                        <h3>Stage 2: Baby Soul (Incarnations 112-222)</h3>
-                        <p>The soul develops social awareness and begins to understand rules, structure, and authority. Strong focus on tradition, family, and belonging to a group.</p>
-                        <ul style="margin-top: 10px; padding-left: 20px;">
-                            <li>Primary lesson: Social structure</li>
-                            <li>Consciousness: Conformist</li>
-                            <li>Challenge: Rigidity and judgment</li>
-                        </ul>
+                        <h3>Stage 2: Baby Soul (112-222)</h3>
+                        <p>Developing social awareness and understanding rules.</p>
                     </div>
-
                     <div class="result-card">
-                        <h3>Stage 3: Young Soul (Incarnations 223-333)</h3>
-                        <p>The soul seeks independence, success, and recognition. Material achievement and competition become primary drivers.</p>
-                        <ul style="margin-top: 10px; padding-left: 20px;">
-                            <li>Primary lesson: Personal power</li>
-                            <li>Consciousness: Competitive</li>
-                            <li>Challenge: Ego and materialism</li>
-                        </ul>
+                        <h3>Stage 3: Young Soul (223-333)</h3>
+                        <p>Seeking independence, success, and recognition.</p>
                     </div>
-
                     <div class="result-card">
-                        <h3>Stage 4: Mature Soul (Incarnations 334-444)</h3>
-                        <p>The soul develops emotional depth, empathy, and seeks meaningful relationships. Inner growth becomes more important than outer success.</p>
-                        <ul style="margin-top: 10px; padding-left: 20px;">
-                            <li>Primary lesson: Emotional mastery</li>
-                            <li>Consciousness: Relationship-focused</li>
-                            <li>Challenge: Emotional intensity</li>
-                        </ul>
+                        <h3>Stage 4: Mature Soul (334-444)</h3>
+                        <p>Developing emotional depth and empathy.</p>
                     </div>
-
                     <div class="result-card">
-                        <h3>Stage 5: Old Soul (Incarnations 445-555)</h3>
-                        <p>The soul seeks spiritual understanding and sees the bigger picture. Detachment from material concerns and focus on wisdom.</p>
-                        <ul style="margin-top: 10px; padding-left: 20px;">
-                            <li>Primary lesson: Spiritual truth</li>
-                            <li>Consciousness: Philosophical</li>
-                            <li>Challenge: Isolation and detachment</li>
-                        </ul>
+                        <h3>Stage 5: Old Soul (445-555)</h3>
+                        <p>Seeking spiritual understanding and wisdom.</p>
                     </div>
-
                     <div class="result-card">
-                        <h3>Stage 6: Transcendent Soul (Incarnations 556-666)</h3>
-                        <p>The soul begins to merge with universal consciousness. Service to humanity and teaching become primary purposes.</p>
-                        <ul style="margin-top: 10px; padding-left: 20px;">
-                            <li>Primary lesson: Universal love</li>
-                            <li>Consciousness: Transpersonal</li>
-                            <li>Challenge: Balancing heaven and earth</li>
-                        </ul>
+                        <h3>Stage 6: Transcendent Soul (556-666)</h3>
+                        <p>Merging with universal consciousness.</p>
                     </div>
-
                     <div class="result-card">
-                        <h3>Stage 7: Infinite Soul (Incarnations 667-777)</h3>
-                        <p>The final stage before liberation. The soul embodies divine consciousness and prepares for moksha.</p>
-                        <ul style="margin-top: 10px; padding-left: 20px;">
-                            <li>Primary lesson: Divine unity</li>
-                            <li>Consciousness: Cosmic</li>
-                            <li>Challenge: Final karmic resolution</li>
-                        </ul>
+                        <h3>Stage 7: Infinite Soul (667-777)</h3>
+                        <p>Final stage before liberation.</p>
                     </div>
                 </div>
             </div>
@@ -1026,43 +834,31 @@
                         <span class="section-icon">🕉️</span>
                         <h2 class="section-title">Vedantic Philosophy of Soul Evolution</h2>
                     </div>
-
                     <div class="wisdom-quote">
-                        "As a person puts on new garments, giving up old ones, the soul similarly accepts new material bodies, giving up the old and useless ones." - Bhagavad Gita 2.22
+                        "As a person puts on new garments, the soul accepts new material bodies." - Bhagavad Gita
                     </div>
-
-                    <h3 style="color: var(--primary); margin: 20px 0;">The Four Purusharthas (Life Goals)</h3>
-                    
+                    <h3 style="color: var(--primary); margin: 20px 0;">The Four Purusharthas</h3>
                     <div class="karaka-grid">
                         <div class="karaka-card">
                             <div class="karaka-planet">⚖️</div>
                             <div class="karaka-name">Dharma</div>
-                            <div class="karaka-meaning">Righteous living and moral values</div>
+                            <div class="karaka-meaning">Righteous living</div>
                         </div>
                         <div class="karaka-card">
                             <div class="karaka-planet">💰</div>
                             <div class="karaka-name">Artha</div>
-                            <div class="karaka-meaning">Material prosperity and security</div>
+                            <div class="karaka-meaning">Material prosperity</div>
                         </div>
                         <div class="karaka-card">
                             <div class="karaka-planet">❤️</div>
                             <div class="karaka-name">Kama</div>
-                            <div class="karaka-meaning">Pleasure and emotional fulfillment</div>
+                            <div class="karaka-meaning">Pleasure and fulfillment</div>
                         </div>
                         <div class="karaka-card">
                             <div class="karaka-planet">🕊️</div>
                             <div class="karaka-name">Moksha</div>
-                            <div class="karaka-meaning">Liberation and spiritual realization</div>
+                            <div class="karaka-meaning">Liberation</div>
                         </div>
-                    </div>
-
-                    <h3 style="color: var(--primary); margin: 30px 0 20px;">The Three Gunas (Qualities of Nature)</h3>
-                    
-                    <div class="result-card">
-                        <p><strong>Sattva (Purity):</strong> Illumination, knowledge, harmony</p>
-                        <p><strong>Rajas (Passion):</strong> Activity, desire, ambition</p>
-                        <p><strong>Tamas (Inertia):</strong> Darkness, ignorance, lethargy</p>
-                        <p style="margin-top: 15px;">The soul's evolution involves gradually increasing Sattva while reducing Rajas and Tamas influences.</p>
                     </div>
                 </div>
             </div>
@@ -1075,47 +871,7 @@
                         <h2 class="section-title">Personalized Spiritual Guidance</h2>
                     </div>
                     <div id="guidanceContent">
-                        <p>Calculate your soul age to receive personalized spiritual guidance based on your current incarnation stage.</p>
-                        
-                        <div class="wisdom-quote">
-                            "The journey of a thousand miles begins with a single step. The journey of 777 incarnations begins with knowing where you stand." - Ancient Wisdom
-                        </div>
-
-                        <h3 style="color: var(--primary); margin: 20px 0;">General Spiritual Practices for Soul Evolution</h3>
-                        
-                        <div class="accordion">
-                            <div class="accordion-item">
-                                <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <span>Daily Meditation Practices</span>
-                                    <span>▼</span>
-                                </div>
-                                <div class="accordion-content">
-                                    <p>Regular meditation accelerates soul evolution by:</p>
-                                    <ul style="padding-left: 20px; margin-top: 10px;">
-                                        <li>Clearing karmic impressions (samskaras)</li>
-                                        <li>Developing witness consciousness</li>
-                                        <li>Connecting with your higher self</li>
-                                        <li>Balancing the three gunas</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="accordion-item">
-                                <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <span>Karma Yoga - The Path of Action</span>
-                                    <span>▼</span>
-                                </div>
-                                <div class="accordion-content">
-                                    <p>Perform actions without attachment to results:</p>
-                                    <ul style="padding-left: 20px; margin-top: 10px;">
-                                        <li>Selfless service (seva)</li>
-                                        <li>Dedication of actions to the Divine</li>
-                                        <li>Maintaining equanimity in success and failure</li>
-                                        <li>Acting from dharma, not desire</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <p>Calculate your soul age to receive personalized spiritual guidance.</p>
                     </div>
                 </div>
             </div>
@@ -1127,7 +883,6 @@
                         <span class="section-icon">❓</span>
                         <h2 class="section-title">Frequently Asked Questions</h2>
                     </div>
-
                     <div class="accordion">
                         <div class="accordion-item">
                             <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -1135,62 +890,25 @@
                                 <span>▼</span>
                             </div>
                             <div class="accordion-content">
-                                <p>The 777 incarnation system is based on ancient Vedantic and Theosophical teachings that describe the soul's complete evolutionary journey through 777 lifetimes. This number is considered sacred as it represents 7 planes of existence, each requiring 111 incarnations to master.</p>
+                                <p>The 777 incarnation system is based on ancient Vedantic and Theosophical teachings.</p>
                             </div>
                         </div>
-
                         <div class="accordion-item">
                             <div class="accordion-header" onclick="toggleAccordion(this)">
-                                <span>How is my soul age calculated?</span>
+                                <span>How is soul age calculated?</span>
                                 <span>▼</span>
                             </div>
                             <div class="accordion-content">
-                                <p>Your soul age is calculated using a combination of:</p>
-                                <ul style="padding-left: 20px; margin-top: 10px;">
-                                    <li>Numerological analysis of your birth date</li>
-                                    <li>Astrological positions at birth</li>
-                                    <li>Karmic number calculations</li>
-                                    <li>Sacred geometry principles</li>
-                                    <li>Jaimini astrological techniques</li>
-                                </ul>
+                                <p>Using numerology, astrology, and sacred geometry principles.</p>
                             </div>
                         </div>
-
                         <div class="accordion-item">
                             <div class="accordion-header" onclick="toggleAccordion(this)">
                                 <span>What are Jaimini Karakas?</span>
                                 <span>▼</span>
                             </div>
                             <div class="accordion-content">
-                                <p>Jaimini Karakas are planetary significators in Vedic astrology that represent different aspects of the soul's journey. The Atmakaraka (soul significator) is the most important, showing the soul's primary desire and lesson in this incarnation. Other karakas represent mind, siblings, parents, children, spouse, and obstacles.</p>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <div class="accordion-header" onclick="toggleAccordion(this)">
-                                <span>Can I change my soul age?</span>
-                                <span>▼</span>
-                            </div>
-                            <div class="accordion-content">
-                                <p>Your soul age represents your current position in the 777 incarnation journey and cannot be changed within a single lifetime. However, you can accelerate your spiritual evolution through dedicated practice, potentially reducing the number of future incarnations needed to reach liberation.</p>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <div class="accordion-header" onclick="toggleAccordion(this)">
-                                <span>What if I'm in my last incarnations?</span>
-                                <span>▼</span>
-                            </div>
-                            <div class="accordion-content">
-                                <p>Souls in their final incarnations (667-777) often experience:</p>
-                                <ul style="padding-left: 20px; margin-top: 10px;">
-                                    <li>Strong desire for spiritual liberation</li>
-                                    <li>Natural detachment from material concerns</li>
-                                    <li>Profound wisdom and understanding</li>
-                                    <li>Ability to see through maya (illusion)</li>
-                                    <li>Deep compassion for all beings</li>
-                                    <li>Spontaneous spiritual experiences</li>
-                                </ul>
+                                <p>Planetary significators representing different aspects of the soul's journey.</p>
                             </div>
                         </div>
                     </div>
@@ -1199,48 +917,40 @@
         </div>
     </div>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete" async defer></script>
+    
     <script>
-        // Initialize Google Maps Places Autocomplete
+        // Global variables
         let autocomplete;
         let currentLocationData = null;
-        let searchTimeout = null;
         let calculationData = null;
 
+        // Initialize Google Maps Autocomplete
         function initAutocomplete() {
             const input = document.getElementById('birthLocation');
-            
-            // Create autocomplete instance
             autocomplete = new google.maps.places.Autocomplete(input, {
                 types: ['(cities)'],
                 fields: ['address_components', 'geometry', 'name', 'formatted_address']
             });
 
-            // Listen for place selection
             autocomplete.addListener('place_changed', function() {
                 const place = autocomplete.getPlace();
-                
                 if (!place.geometry) {
-                    showError('locationError', 'Please select a valid location from the dropdown');
+                    showError('locationError', 'Please select a valid location');
                     showValidation('locationValidation', false);
                     currentLocationData = null;
                     return;
                 }
 
-                // Store location data
                 currentLocationData = {
                     name: place.formatted_address || place.name,
                     lat: place.geometry.location.lat(),
-                    lng: place.geometry.location.lng(),
-                    components: place.address_components
+                    lng: place.geometry.location.lng()
                 };
-
-                // Validate location
                 validateLocation();
             });
 
-            // Add input event listener for validation
             input.addEventListener('input', function() {
-                // Clear location data when user types
                 currentLocationData = null;
                 showValidation('locationValidation', false);
             });
@@ -1248,18 +958,9 @@
 
         // Tab switching
         function switchTab(tabName) {
-            // Hide all tab contents
-            const allTabs = document.querySelectorAll('.tab-content');
-            allTabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Remove active class from all tab buttons
-            const allButtons = document.querySelectorAll('.tab');
-            allButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Show selected tab
-            document.getElementById(`${tabName}-tab`).classList.add('active');
-            
-            // Add active class to clicked button
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName + '-tab').classList.add('active');
             event.currentTarget.classList.add('active');
         }
 
@@ -1268,16 +969,9 @@
             const content = header.nextElementSibling;
             const isOpen = content.classList.contains('show');
             
-            // Close all accordions in the same container
-            const container = header.closest('.accordion');
-            container.querySelectorAll('.accordion-content').forEach(c => {
-                c.classList.remove('show');
-            });
-            container.querySelectorAll('.accordion-header').forEach(h => {
-                h.classList.remove('active');
-            });
+            header.closest('.accordion').querySelectorAll('.accordion-content').forEach(c => c.classList.remove('show'));
+            header.closest('.accordion').querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
             
-            // Open clicked accordion if it was closed
             if (!isOpen) {
                 content.classList.add('show');
                 header.classList.add('active');
@@ -1290,40 +984,33 @@
             const month = parseInt(document.getElementById('birthMonth').value);
             const year = parseInt(document.getElementById('birthYear').value);
             
-            // Check if all fields are filled
             if (!day || !month || !year) {
                 showError('dateError', 'Please fill in all date fields');
                 showValidation('dateValidation', false);
                 return false;
             }
 
-            // Validate year range
             const currentYear = new Date().getFullYear();
             if (year < 1874 || year > currentYear) {
-                showError('dateError', `Year must be between 1874 and ${currentYear}`);
+                showError('dateError', 'Year must be between 1874 and ' + currentYear);
                 showValidation('dateValidation', false);
                 return false;
             }
 
-            // Smart day validation based on month
             const daysInMonth = getDaysInMonth(month, year);
             if (day < 1 || day > daysInMonth) {
-                showError('dateError', `Day must be between 1 and ${daysInMonth} for the selected month`);
+                showError('dateError', 'Day must be between 1 and ' + daysInMonth);
                 showValidation('dateValidation', false);
                 return false;
             }
 
-            // Create date object to validate
             const date = new Date(year, month - 1, day);
-            const now = new Date();
-            
-            if (date > now) {
+            if (date > new Date()) {
                 showError('dateError', 'Birth date cannot be in the future');
                 showValidation('dateValidation', false);
                 return false;
             }
 
-            // All validations passed
             hideError('dateError');
             showValidation('dateValidation', true);
             return true;
@@ -1331,12 +1018,7 @@
 
         function getDaysInMonth(month, year) {
             const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-            
-            // Check for leap year (February)
-            if (month === 2 && isLeapYear(year)) {
-                return 29;
-            }
-            
+            if (month === 2 && isLeapYear(year)) return 29;
             return monthDays[month - 1];
         }
 
@@ -1349,23 +1031,19 @@
             const minute = document.getElementById('birthMinute').value;
             const ampm = document.getElementById('ampm').value;
             
-            // Time is completely optional
             if (!hour && !minute && !ampm) {
                 showValidation('timeValidation', true);
                 hideError('timeError');
                 return true;
             }
             
-            // If any time field is filled, validate properly
             if (hour || minute || ampm) {
-                // Check if all required time fields are filled
                 if (!hour || !ampm) {
                     showError('timeError', 'Please select hour and AM/PM');
                     showValidation('timeValidation', false);
                     return false;
                 }
                 
-                // Validate minute if provided
                 if (minute !== '' && (parseInt(minute) < 0 || parseInt(minute) > 59)) {
                     showError('timeError', 'Minutes must be between 0 and 59');
                     showValidation('timeValidation', false);
@@ -1399,25 +1077,17 @@
         }
 
         function useUnknownTime() {
-            // Set time to noon
             document.getElementById('birthHour').value = '12';
             document.getElementById('birthMinute').value = '0';
             document.getElementById('ampm').value = 'PM';
-            
-            // Validate
             validateTime();
         }
 
         // Helper functions
         function showValidation(id, isValid) {
             const icon = document.getElementById(id);
-            if (isValid) {
-                icon.textContent = '✓';
-                icon.className = 'validation-icon valid';
-            } else {
-                icon.textContent = '✗';
-                icon.className = 'validation-icon invalid';
-            }
+            icon.textContent = isValid ? '✓' : '✗';
+            icon.className = isValid ? 'validation-icon valid' : 'validation-icon invalid';
         }
 
         function showError(id, message) {
@@ -1427,23 +1097,16 @@
         }
 
         function hideError(id) {
-            const errorElement = document.getElementById(id);
-            errorElement.classList.remove('show');
+            document.getElementById(id).classList.remove('show');
         }
 
-        // Calculate Soul Age
+        // Main calculation function
         function calculateSoulAge() {
-            // Validate all fields
-            const isDateValid = validateDate();
-            const isTimeValid = validateTime();
-            const isLocationValid = validateLocation();
-            
-            if (!isDateValid || !isTimeValid || !isLocationValid) {
-                alert('Please correct the errors in the form before calculating.');
+            if (!validateDate() || !validateTime() || !validateLocation()) {
+                alert('Please correct the errors in the form.');
                 return;
             }
             
-            // Get form values
             const day = parseInt(document.getElementById('birthDay').value);
             const month = parseInt(document.getElementById('birthMonth').value);
             const year = parseInt(document.getElementById('birthYear').value);
@@ -1451,16 +1114,13 @@
             const minute = parseInt(document.getElementById('birthMinute').value) || 0;
             const ampm = document.getElementById('ampm').value || 'PM';
             
-            // Convert to 24-hour format
             let hour24 = hour;
             if (ampm === 'PM' && hour !== 12) hour24 += 12;
             if (ampm === 'AM' && hour === 12) hour24 = 0;
             
-            // Calculate soul age using complex algorithm
             const birthDate = new Date(year, month - 1, day, hour24, minute);
             const soulAge = calculateSoulNumber(birthDate, currentLocationData);
             
-            // Store calculation data
             calculationData = {
                 birthDate: birthDate,
                 location: currentLocationData,
@@ -1468,26 +1128,18 @@
                 karakas: calculateJaiminiKarakas(birthDate, currentLocationData)
             };
             
-            // Display results
             displayResults(calculationData);
-            
-            // Update other tabs with personalized content
-            updateJaiminiTab(calculationData);
-            updateDetailedTab(calculationData);
-            updateGuidanceTab(calculationData);
+            updateAllTabs(calculationData);
         }
 
         function calculateSoulNumber(birthDate, location) {
-            // Complex soul age calculation algorithm
             const day = birthDate.getDate();
             const month = birthDate.getMonth() + 1;
             const year = birthDate.getFullYear();
-            const hour = birthDate.getHours();
-            const minute = birthDate.getMinutes();
             
-            // Numerological reduction
+            // Calculate life path number
             let lifePathNumber = 0;
-            const dateString = `${day}${month}${year}`;
+            const dateString = '' + day + month + year;
             for (let digit of dateString) {
                 lifePathNumber += parseInt(digit);
             }
@@ -1495,25 +1147,16 @@
                 lifePathNumber = lifePathNumber.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
             }
             
-            // Karmic number calculation
-            const karmicDebt = [13, 14, 16, 19].includes(day + month) ? 50 : 0;
-            
-            // Location-based adjustment
+            // Calculate incarnation number
             const latAdjustment = Math.abs(location.lat) / 90 * 100;
             const lngAdjustment = Math.abs(location.lng) / 180 * 100;
             
-            // Time-based calculation
-            const timeValue = (hour * 60 + minute) / 1440 * 100;
-            
-            // Calculate incarnation number (1-777)
             let incarnationNumber = Math.floor(
                 (lifePathNumber * 77.7) + 
                 (year % 777) + 
                 (month * day) + 
                 latAdjustment + 
-                lngAdjustment + 
-                timeValue - 
-                karmicDebt
+                lngAdjustment
             ) % 777;
             
             if (incarnationNumber === 0) incarnationNumber = 1;
@@ -1543,27 +1186,20 @@
                 stageLevel = 7;
             }
             
-            // Calculate progress within current stage
             const stageStart = (stageLevel - 1) * 111 + 1;
             const progressInStage = ((incarnationNumber - stageStart + 1) / 111 * 100).toFixed(1);
-            
-            // Calculate remaining incarnations
-            const remainingIncarnations = 777 - incarnationNumber;
             
             return {
                 incarnationNumber: incarnationNumber,
                 stage: stage,
                 stageLevel: stageLevel,
                 progressInStage: progressInStage,
-                remainingIncarnations: remainingIncarnations,
-                lifePathNumber: lifePathNumber,
-                karmicDebt: karmicDebt > 0
+                remainingIncarnations: 777 - incarnationNumber,
+                lifePathNumber: lifePathNumber
             };
         }
 
         function calculateJaiminiKarakas(birthDate, location) {
-            // Simplified Jaimini Karaka calculation
-            // In real implementation, this would use actual planetary positions
             const planets = ['Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn', 'Rahu'];
             const karakas = [
                 'Atmakaraka (Soul)',
@@ -1576,12 +1212,107 @@
                 'Darakaraka (Spouse)'
             ];
             
-            // Generate pseudo-random but consistent planet assignments based on birth data
             const seed = birthDate.getTime() + location.lat + location.lng;
-            const shuffledPlanets = planets.sort(() => {
-                return Math.sin(seed) - 0.5;
-            });
+            const shuffledPlanets = planets.sort(() => Math.sin(seed) - 0.5);
             
             const karakaAssignments = {};
             karakas.forEach((karaka, index) => {
                 karakaAssignments[karaka] = shuffledPlanets[index];
+            });
+            
+            return karakaAssignments;
+        }
+
+        function displayResults(data) {
+            const resultsHTML = createResultsHTML(data.soulAge);
+            document.getElementById('results').innerHTML = resultsHTML;
+            document.getElementById('results').classList.add('show');
+        }
+
+        function createResultsHTML(soulAge) {
+            return '<div class="section">' +
+                '<div class="section-header">' +
+                '<span class="section-icon">✨</span>' +
+                '<h2 class="section-title">Your Soul Age Analysis</h2>' +
+                '</div>' +
+                '<div class="result-card">' +
+                '<div class="result-title">Current Incarnation</div>' +
+                '<div class="result-value">#' + soulAge.incarnationNumber + ' of 777</div>' +
+                '<p>Remaining: ' + soulAge.remainingIncarnations + ' incarnations</p>' +
+                '</div>' +
+                '<div class="result-card">' +
+                '<div class="result-title">Soul Stage</div>' +
+                '<div class="result-value">' + soulAge.stage + '</div>' +
+                '<div class="progress-bar">' +
+                '<div class="progress-fill" style="width: ' + soulAge.progressInStage + '%">' +
+                soulAge.progressInStage + '%</div></div>' +
+                '</div></div>';
+        }
+
+        function updateAllTabs(data) {
+            // Update Jaimini tab
+            const jaiminiHTML = createJaiminiHTML(data.karakas, data.soulAge);
+            document.getElementById('jaiminiContent').innerHTML = jaiminiHTML;
+            
+            // Update Detailed tab
+            const detailedHTML = createDetailedHTML(data.soulAge);
+            document.getElementById('detailedContent').innerHTML = detailedHTML;
+            
+            // Update Guidance tab
+            const guidanceHTML = createGuidanceHTML(data.soulAge);
+            document.getElementById('guidanceContent').innerHTML = guidanceHTML;
+        }
+
+        function createJaiminiHTML(karakas, soulAge) {
+            let html = '<div class="wisdom-quote">Your Atmakaraka is ' + karakas['Atmakaraka (Soul)'] + '</div>';
+            html += '<div class="karaka-grid">';
+            
+            for (let karaka in karakas) {
+                html += '<div class="karaka-card">';
+                html += '<div class="karaka-planet">' + getPlanetSymbol(karakas[karaka]) + '</div>';
+                html += '<div class="karaka-name">' + karaka.split(' ')[0] + '</div>';
+                html += '<div style="font-weight: bold; color: var(--accent);">' + karakas[karaka] + '</div>';
+                html += '</div>';
+            }
+            
+            html += '</div>';
+            return html;
+        }
+
+        function createDetailedHTML(soulAge) {
+            return '<div class="result-card">' +
+                '<h3>Complete Soul Statistics</h3>' +
+                '<p>Incarnation: #' + soulAge.incarnationNumber + '</p>' +
+                '<p>Stage: ' + soulAge.stage + '</p>' +
+                '<p>Progress: ' + soulAge.progressInStage + '%</p>' +
+                '<p>Life Path: ' + soulAge.lifePathNumber + '</p>' +
+                '</div>';
+        }
+
+        function createGuidanceHTML(soulAge) {
+            return '<div class="wisdom-quote">As a ' + soulAge.stage + 
+                ', focus on ' + getStageFocus(soulAge.stageLevel) + '</div>' +
+                '<div class="result-card">' +
+                '<h3>Recommended Practices</h3>' +
+                '<ul><li>Daily meditation</li><li>Karma yoga</li><li>Self-inquiry</li></ul>' +
+                '</div>';
+        }
+
+        function getPlanetSymbol(planet) {
+            const symbols = {
+                'Sun': '☀️', 'Moon': '🌙', 'Mars': '♂️', 'Mercury': '☿️',
+                'Jupiter': '♃', 'Venus': '♀️', 'Saturn': '♄', 'Rahu': '🐉'
+            };
+            return symbols[planet] || '🌟';
+        }
+
+        function getStageFocus(level) {
+            const focuses = [
+                '', 'physical mastery', 'social understanding', 'personal power',
+                'emotional depth', 'spiritual wisdom', 'universal service', 'divine unity'
+            ];
+            return focuses[level];
+        }
+    </script>
+</body>
+</html>
